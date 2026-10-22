@@ -12,7 +12,7 @@ function configuration(input){
  return {url:url.origin,token:input.token.trim(),key,trial_expires:input.trial_expires||null};
 }
 class SharedRevisionStore{
- constructor(local,config,fetcher=global.fetch){this.local=local;this.config=configuration(config);this.fetcher=fetcher;this.error=null;this.synced=false;this.running=null;}
+ constructor(local,config,fetcher=global.fetch.bind(global)){this.local=local;this.config=configuration(config);this.fetcher=fetcher;this.error=null;this.synced=false;this.running=null;}
  events(){return this.local.events();}
  async command(command){
   const response=await this.fetcher(this.config.url,{method:'POST',headers:{Authorization:'Bearer '+this.config.token,'Content-Type':'application/json'},body:JSON.stringify(command),credentials:'omit',redirect:'error',signal:AbortSignal.timeout(12000)});
