@@ -4,6 +4,14 @@ A small F181 **Science in society** practice app for a student and parent. Both 
 
 The record is an **append-only folder of JSON events**. Every observation creates a file; undo creates another event referencing the original. The app rebuilds the progress view from those files.
 
+## GitHub Pages preview
+
+The `Deploy GitHub Pages` Actions workflow publishes the static app on pushes to `main`. With repository Pages configured to **GitHub Actions**, the expected URL is <https://snowch.github.io/ocr-applied-science/>.
+
+**The Pages preview saves observations only in the current browser.** It supports prepared questions, parent/self-check modes, hints, progress and JSON event backup, but does not synchronize between phones or connect to Google Drive. Clearing browser data removes those local records; use **Back up observations** to export them. No learner observations or API keys are uploaded to the public repository or deployed artifact.
+
+GitHub Pages cannot run the Python API. The static preview uses a separate browser storage adapter; local server mode continues to use JSON event files. Shared family storage still needs an authenticated backend or a configured Google Drive integration.
+
 ## Try locally
 
 Requires Python 3.10 or newer; the app has no third-party dependencies.
@@ -54,6 +62,8 @@ It asks for an API key without displaying it and writes results under ignored `r
 ```sh
 python -m unittest discover -s tests -v
 node --check app/static/app.js
+node --test tests/browser-store.test.cjs
+python tools/build_pages.py
 ```
 
 Node is optional for running the app and is used only for the JavaScript syntax check.

@@ -103,10 +103,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json(200,{'id':qid,'variant':variant,'topic':q['topic'],'question':item['question'],'source':q['source'],
                 'hints':q['hints'] if variant=='main' else ['Think back to the concept you practised. Try explaining it in your own words.'],
                 'marking_points':item['marking_points'],'model_answer':q['model_answer'] if variant=='main' else ' '.join(p['criterion'] for p in item['marking_points'])})
-        if url.path in ('/','/app.js','/style.css'):
-            name={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}[url.path]
+        if url.path in ('/','/app.js','/style.css','/config.js','/browser-store.js'):
+            name='index.html' if url.path=='/' else url.path[1:]
             data=(ROOT/'static'/name).read_bytes();self.send_response(200)
-            self.send_header('Content-Type',{'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8'}[url.path])
+            self.send_header('Content-Type','text/html; charset=utf-8' if url.path=='/' else 'text/css; charset=utf-8' if name.endswith('.css') else 'text/javascript; charset=utf-8')
             self.send_header('X-Content-Type-Options','nosniff')
             self.send_header('Content-Security-Policy',"default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'")
             self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
