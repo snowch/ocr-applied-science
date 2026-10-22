@@ -27,3 +27,21 @@ test('teaching status syncs across devices without adding or removing answer evi
  const a=client(fetcher),b=client(fetcher),skill=bank.questions[0].skill_id;await a.request('/api/teaching-status',{id:randomUUID(),skill_id:skill,status:'not_taught',mode:'self'});await b.sync();let state=await b.request('/api/state');assert.equal(state.total_attempts,0);assert.equal(state.skills.find(s=>s.id===skill).status,'not_taught');assert.ok(!state.recommendations.some(q=>q.skill_id===skill));
  await b.request('/api/teaching-status',{id:randomUUID(),skill_id:skill,status:'ready',mode:'parent'});await a.sync();state=await a.request('/api/state');assert.equal(state.total_attempts,0);assert.equal(state.skills.find(s=>s.id===skill).status,'untested');assert.equal(remote.size,2);
 });
+
+test('existing device history can be explicitly shared, retained and recovered after remote loss',async()=>{
+ const remote=new Map();const fetcher=async(url,options)=>{const [cmd,key,id,value]=JSON.parse(options.body);let result;if(cmd==='HGETALL')result=[...remote].flat();else if(cmd==='HSETNX'){result=remote.has(id)?0:1;if(result)remote.set(id,value)}else result=remote.get(id)||null;return {ok:true,json:async()=>({result})}};
+ const a=client(fetcher),b=client(fetcher);
+ // Default device-only namespace, distinct from the active family namespace.
+ const device=new a.local.constructor(bank,a.local.storage);
+ const record=answer();await device.request('/api/attempts',record);
+ await device.request('/api/teaching-status',{id:randomUUID(),skill_id:bank.questions[1].skill_id,status:'not_taught',mode:'self'});
+ await a.sync();assert.equal(remote.size,0);assert.equal(a.unsharedDeviceEvents().length,2);
+ const originals=JSON.stringify(device.events());await a.shareDeviceProgress();await b.sync();
+ assert.equal(b.local.state().total_attempts,1);assert.equal(remote.size,2);assert.equal(JSON.stringify(device.events()),originals);assert.equal(a.unsharedDeviceEvents().length,0);
+ await a.shareDeviceProgress();assert.equal(remote.size,2);
+ remote.clear();await a.sync();assert.equal(remote.size,2);assert.equal(a.pending(),0);
+ // Same ID with different content must never silently replace history.
+ const event=device.events().find(e=>e.type==='answer_observed');
+ device.storage.setItem(device.prefix+event.event_id,JSON.stringify({...event,payload:{...event.payload,note:'conflict'}}));
+ await assert.rejects(()=>a.shareDeviceProgress(),/Conflicting/);assert.equal(remote.size,2);assert.equal(a.events().find(e=>e.event_id===event.event_id).payload.note,event.payload.note);
+});

@@ -65,3 +65,7 @@ The Google Drive section above is historical design exploration and is not used 
 ## Teaching coverage events
 
 A `teaching_status_changed` event has payload `student_id`, `skill_id`, `status` (`not_taught` or `ready`) and `mode` (`self` or `parent`). The envelope supplies the immutable event ID and recorded time. The latest event per skill controls coverage. These events are not attempts and do not add zero marks, failures or assessments. Marking ready appends a new event rather than changing the original; prior knowledge evidence remains intact. Not-taught skills are excluded from suggested/recommended/random practice and AI-coach priorities, but explicit manual selection remains available.
+
+## Sharing existing device progress
+
+Connecting a family store keeps pre-existing device-only history separate. In Family storage, **Share existing progress** explicitly copies that device's default history into the connected family namespace and syncs it. Event IDs, timestamps and original records are preserved; retries do not duplicate events. All records and same-ID conflicts are checked before copying. Records from other family namespaces are never included. A failed upload remains pending for retry. Synchronisation also republishes cached records missing from the remote store, even if a previous upload was acknowledged. Open progress maps refresh after new shared records arrive; questions and open progress dialogs are not interrupted.

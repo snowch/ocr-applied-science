@@ -32,6 +32,16 @@ class SharedRevisionStore{
   }else if(e.type==='teaching_status_changed'){if(!this.local.bank.questions.some(q=>(q.skill_id||q.id)===p.skill_id)||!['not_taught','ready'].includes(p.status)||!['self','parent'].includes(p.mode))throw Error('Invalid shared teaching status.');
   }else if(e.type!=='observation_retracted'||!/^[-a-f0-9]{36}$/i.test(p.target_event_id))throw Error('A shared observation is invalid.');
  }
+ deviceEvents(){return new global.RevisionBrowserStore(this.local.bank,this.local.storage).events();}
+ unsharedDeviceEvents(){const shared=new Set(this.events().map(e=>e.event_id));return this.deviceEvents().filter(e=>!shared.has(e.event_id));}
+ async shareDeviceProgress(){
+  await this.sync();
+  const source=this.deviceEvents();
+  // Validate every record and conflict before copying; retain the original history.
+  for(const e of source){this.validate(e,e.event_id);const prior=this.local.storage.getItem(this.local.prefix+e.event_id);if(prior&&canonical(JSON.parse(prior))!==canonical(e))throw Error('Conflicting observation: export a backup before sharing.');}
+  for(const e of source)this.local.storage.setItem(this.local.prefix+e.event_id,JSON.stringify(e));
+  await this.sync();return source.length;
+ }
  async performSync(){
   try{
    const entries=await this.command(['HGETALL',this.config.key]);
@@ -39,8 +49,9 @@ class SharedRevisionStore{
    const incoming=[];
    for(let i=0;i<entries.length;i+=2){const id=entries[i],e=JSON.parse(entries[i+1]);this.validate(e,id);const prior=this.local.storage.getItem(this.local.prefix+id);if(prior&&canonical(JSON.parse(prior))!==canonical(e))throw Error('Conflicting observation: export a backup before reconnecting.');incoming.push(e);}
    for(const e of incoming){this.local.storage.setItem(this.local.prefix+e.event_id,JSON.stringify(e));this.local.storage.setItem(this.ackKey(e.event_id),'1');}
+   const remoteIds=new Set(incoming.map(e=>e.event_id));
    for(const e of this.events()){
-    if(this.local.storage.getItem(this.ackKey(e.event_id)))continue;
+    if(remoteIds.has(e.event_id))continue;
     const result=await this.command(['HSETNX',this.config.key,e.event_id,JSON.stringify(e)]);
     if(result!==1){const prior=await this.command(['HGET',this.config.key,e.event_id]);if(!prior||canonical(JSON.parse(prior))!==canonical(e))throw Error('Conflicting observation: export a backup before reconnecting.');}
     this.local.storage.setItem(this.ackKey(e.event_id),'1');
