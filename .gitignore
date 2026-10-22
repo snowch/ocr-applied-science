@@ -1,0 +1,13 @@
+data/
+reports/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.env
+.env.*
+!.env.example
+.dev.vars*
+*.sqlite3*
+*.log
+.DS_Store

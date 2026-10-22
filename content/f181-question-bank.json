@@ -1,0 +1,1214 @@
+{
+  "title": "F181 Science in society: 20-question pilot",
+  "qualification": "OCR Cambridge Advanced National Applied Science H151",
+  "version": "0.1",
+  "created": "2026-10-22",
+  "authorship": "Generated in this ChatGPT conversation; exact model/version and reasoning setting not recorded.",
+  "status": "Original practice material with provisional rubrics. Not an official OCR paper. Independent teacher review pending.",
+  "coverage": "Selected short-answer topics only; not the complete F181 syllabus, extended responses or exam-series pre-release material.",
+  "session_rules": {
+    "questions_at_once": 1,
+    "show_model_answer": "Only after an attempt and an explicit request to reveal it.",
+    "hint_policy": "Serve the next prepared hint on request; record hint use.",
+    "retest_policy": "Use the different prepared retest in a later session; record assisted and independent performance separately.",
+    "mastery_policy": "Do not infer mastery from one answer. Require evidence from later independent retests.",
+    "grading_policy": "AI identifies met point IDs and evidence; application validates IDs, then calculates the total. Ambiguous answers need clarification.",
+    "sharing_policy": "Student previews a concise parent summary before sharing."
+  },
+  "questions": [
+    {
+      "id": "F181-P01",
+      "topic": "Scientific explanations",
+      "specification_sections": [
+        "3.1.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 66,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Recall",
+      "question": "Distinguish the purpose of a scientific theory from the purpose of a scientific law.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "A scientific theory provides an explanation of why or how a phenomenon occurs."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "A scientific law describes a pattern or relationship, or predicts what occurs under specified conditions."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "A theory explains a phenomenon. A law describes or predicts a pattern in what happens under specified conditions.",
+      "common_misconception": "A theory is just an unsupported guess.",
+      "hints": [
+        "Think about the different jobs of an explanation and a description.",
+        "Consider whether describing a pattern also explains its cause."
+      ],
+      "follow_up": "How could scientists describe a pattern before they understand its cause?",
+      "retest": {
+        "question": "Statement A explains a mechanism behind an observation. Statement B describes a consistent mathematical relationship. Which is playing the role of a theory, and which of a law?",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "A plays the role of a theory."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "B plays the role of a law."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P02",
+      "topic": "Scientific explanations",
+      "specification_sections": [
+        "3.1.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 66,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Evaluate",
+      "question": "A student says, \"With enough evidence, a scientific theory is promoted to a law, and then it can never change.\" Identify and correct two errors.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Theories do not become laws simply by accumulating evidence; they have different purposes."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Laws can be revised or their scope refined in response to evidence; neither label guarantees an unchangeable statement."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "A theory does not graduate into a law: they serve different purposes. Laws can be revised or restricted when new evidence shows limitations.",
+      "common_misconception": "Scientific knowledge forms a ladder from guess to theory to permanent law.",
+      "hints": [
+        "Separate the claim about promotion from the claim about permanence.",
+        "Ask what scientists should do if new observations conflict with a statement."
+      ],
+      "follow_up": "What should scientists investigate before rejecting a well-supported explanation after one unexpected result?",
+      "retest": {
+        "question": "A pupil says that a law outranks a theory and that new observations cannot challenge a law. Correct each claim.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "A law and a theory serve different functions, rather than forming a ranking."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Evidence can challenge a law or show its limits."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P03",
+      "topic": "Hypotheses and predictions",
+      "specification_sections": [
+        "3.1.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 66,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Recall",
+      "question": "Explain what a hypothesis is and what a prediction is in a scientific investigation.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "A hypothesis is a proposed, testable explanation or explanatory idea."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "A prediction is a specific expected observation or outcome when the hypothesis is tested."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "A hypothesis is a proposed explanation that can be tested. A prediction states what we expect to observe in a test if that explanation is correct.",
+      "common_misconception": "Hypothesis and prediction are interchangeable names for any guess.",
+      "hints": [
+        "Think about the idea being tested and the result expected from the test.",
+        "One can lead to several expected observations in different tests."
+      ],
+      "follow_up": "Could one hypothesis lead to more than one prediction?",
+      "retest": {
+        "question": "A scientist proposes that a coating slows water loss, then expects coated leaves to lose less mass in two hours. Identify the hypothesis and the prediction.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "The proposed explanation that the coating slows water loss is the hypothesis."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "The expected smaller loss of mass in two hours is the prediction."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P04",
+      "topic": "Hypotheses and predictions",
+      "specification_sections": [
+        "1.2.1",
+        "3.1.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 66,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "A student notices that puddles disappear faster on warmer days. Write a testable hypothesis linking temperature to evaporation, and a measurable prediction for a fair comparison of water at 20 C and 30 C.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "A testable hypothesis that increasing temperature increases evaporation rate, or an equivalent causal explanatory proposal."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "A prediction that the 30 C sample loses more water/mass over the same time than the 20 C sample, with comparable starting conditions. No exact numerical loss is required."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Increasing temperature increases the evaporation rate. With equal starting volumes, exposed areas and times, the sample at 30 C should lose more mass than the one at 20 C.",
+      "common_misconception": "A prediction must invent an exact result before any measurements exist.",
+      "hints": [
+        "Keep the explanation distinct from the measurement you expect.",
+        "Choose a measurement that tells you how much water has left each container."
+      ],
+      "follow_up": "Why should the exposed water surfaces be the same size?",
+      "retest": {
+        "question": "Propose a testable relationship between wind speed and water evaporation, then predict the result for otherwise identical samples exposed to still air and a fan.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Proposes that greater air movement increases evaporation rate."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Predicts greater water/mass loss with the fan over the same interval under comparable conditions."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P05",
+      "topic": "Hypotheses and predictions",
+      "specification_sections": [
+        "1.2.1",
+        "3.1.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 66,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "A scientist hypothesises that a reflective cover reduces heat absorption. Two otherwise identical containers start at the same temperature and receive the same lamp exposure. One has the cover. Predict the temperature result and name the measurement needed to test it.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Predicts a smaller temperature rise, or lower final temperature given the same starting temperature, in the covered container."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Measures temperature change in both containers over equal exposure times, or compares final temperatures after the stated equal starts and exposure."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The covered container should have a smaller temperature rise. Measure the temperatures of both containers before and after the same lamp exposure and compare their changes.",
+      "common_misconception": "Repeating the hypothesis is enough without identifying an observable measurement.",
+      "hints": [
+        "Think about the outcome that would follow if less energy were absorbed.",
+        "Choose a variable you can measure in both containers."
+      ],
+      "follow_up": "What result would make you question this hypothesis?",
+      "retest": {
+        "question": "An insulating sleeve is hypothesised to slow cooling. Identical warm water samples start at the same temperature. Predict the sleeved sample\u2019s result after ten minutes and state the comparison to measure.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Sleeved sample should remain warmer or show a smaller temperature drop."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Compare temperature changes over the same ten minutes, or final temperatures given equal starts."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P06",
+      "topic": "Scientific method",
+      "specification_sections": [
+        "1.2.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 63,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Explain",
+      "question": "An experiment gives results that do not support a scientist\u2019s hypothesis. Explain two ways this shows that scientific investigation need not follow a single fixed sequence.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Scientists can revisit and revise the hypothesis in light of evidence."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "They can revisit experimental methods or collect further data/repeat tests to investigate the mismatch."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The scientist may revise the hypothesis and make new predictions. They may also check the method and run further experiments, returning to earlier stages.",
+      "common_misconception": "An investigation must end after its first conclusion.",
+      "hints": [
+        "Think about which earlier stages might need another visit.",
+        "A mismatch could concern either the explanation or how the test was conducted."
+      ],
+      "follow_up": "Why would checking the experimental method be useful before rejecting the hypothesis?",
+      "retest": {
+        "question": "Unexpected measurements lead a team to redesign an experiment. Give two other ways they could revisit earlier work.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Reconsider or revise the hypothesis/predictions."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Review earlier research or collect additional evidence; accept another distinct earlier-stage action other than the redesign already stated."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P07",
+      "topic": "Scientific method",
+      "specification_sections": [
+        "1.2.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 63,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Explain",
+      "question": "Give two distinct reasons for reviewing existing research before designing a new investigation.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Identify what is already known, unanswered questions or relevant hypotheses; avoid unnecessary duplication."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Use or improve previous methods/evidence to plan a suitable investigation, such as selecting measurement approaches or identifying known limitations."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "A review identifies gaps in existing knowledge. It also helps choose suitable methods by learning from earlier studies and their limitations.",
+      "common_misconception": "A literature review can replace collecting evidence for the new research question.",
+      "hints": [
+        "Think about the research question and the practical design separately.",
+        "Previous papers can tell you both what was found and how it was investigated."
+      ],
+      "follow_up": "When might deliberately repeating an earlier study still be worthwhile?",
+      "retest": {
+        "question": "Before studying a new water filter, a team reads earlier filtration studies. State one benefit for choosing its question and one for choosing its method.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Identifies a gap or unresolved issue about filter performance."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Finds suitable tests, measurements or limitations to address in the design."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P08",
+      "topic": "Scientific method",
+      "specification_sections": [
+        "1.2.1",
+        "1.2.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 63,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "Several observations show that a material expands when heated. A scientist uses these observations to propose a general pattern. Name this type of reasoning and explain why the conclusion is not certain from these observations alone.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Identifies inductive reasoning."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Specific/limited observations may not cover all materials or conditions; further observations could reveal exceptions."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "This is inductive reasoning. The observed examples support a generalisation, but they do not establish that it holds for every material or condition.",
+      "common_misconception": "Several supporting examples logically prove a universal claim.",
+      "hints": [
+        "The argument moves from particular observations to a broader statement.",
+        "Think about cases that were not observed."
+      ],
+      "follow_up": "How could the scientist test the limits of the proposed pattern?",
+      "retest": {
+        "question": "A researcher sees better growth in several fertilised plots and generalises to all crops. Name the reasoning and give one reason to be cautious.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Inductive reasoning."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "The sample may not represent all crops, soils or conditions, so the generalisation may have exceptions."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P09",
+      "topic": "Peer review",
+      "specification_sections": [
+        "4.1.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 68,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Explain",
+      "question": "Give two distinct purposes of peer review before a research report is published.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Scrutinise whether methods, analysis or conclusions are valid and supported."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Maintain or improve the quality/standard of the research published, including recommending corrections or rejection."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Reviewers assess whether the work and conclusions are valid. Their recommendations also help maintain the quality of published research.",
+      "common_misconception": "Two different phrasings of publication quality count as two distinct purposes.",
+      "hints": [
+        "Think about assessing a particular study and maintaining publication standards.",
+        "A reviewer can recommend changes or advise against publication."
+      ],
+      "follow_up": "How could a reviewer respond to conclusions that go beyond the results?",
+      "retest": {
+        "question": "An editor asks experts to evaluate a manuscript. State one purpose concerning the study\u2019s claims and one concerning the published literature.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Check that claims are supported by valid work/evidence."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Protect or improve the standard of research that enters the published literature."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P10",
+      "topic": "Peer review",
+      "specification_sections": [
+        "4.1.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 68,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "A river ecology paper needs a reviewer. Dr Rana researches river ecosystems, did not take part in the study and has no relevant financial ties. Give two reasons why these details support choosing her.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Relevant river ecology expertise helps her assess the subject matter/methods."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Independence from the study or absence of relevant conflicting interests reduces a source of bias. Do not count both independence details as separate marks."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Her subject expertise helps her judge the ecological methods and conclusions. Her independence from the work and its financial interests reduces a potential source of bias.",
+      "common_misconception": "A reviewer needs only to be a scientist in any field.",
+      "hints": [
+        "Consider the reviewer\u2019s knowledge and her relationship to the study.",
+        "Two facts about independence support the same broad reason."
+      ],
+      "follow_up": "Would having no conflict of interest be enough if she lacked the relevant expertise?",
+      "retest": {
+        "question": "A battery paper is reviewed by an electrochemist who has no connection to its authors or sponsor. Explain why expertise and independence both matter.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Expertise supports competent assessment of the battery science."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Independence reduces potential bias or conflicts in that assessment."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P11",
+      "topic": "Peer review",
+      "specification_sections": [
+        "4.1.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 68,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Evaluate",
+      "question": "A news report says, \"This study was peer reviewed, so its conclusion is guaranteed to be true.\" Explain why the guarantee is unjustified and give one later activity that could test the conclusion.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Peer review can miss errors, limitations or unsupported assumptions and does not prove a conclusion true."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Independent replication, further experiments, additional observations or reanalysis can test/check the conclusion."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Reviewers can miss limitations or errors, so peer review is not a guarantee. Independent replication or further evidence can test whether the conclusion holds.",
+      "common_misconception": "Peer review replaces replication and further testing.",
+      "hints": [
+        "Consider the limits of any review of a written report.",
+        "Think about evidence collected after publication."
+      ],
+      "follow_up": "What would a failed replication prompt scientists to investigate?",
+      "retest": {
+        "question": "A published study later faces contradictory evidence. Give one reason this is possible despite peer review and one appropriate scientific response.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Review is fallible and earlier evidence may have limitations."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Investigate/replicate/reanalyse and revise conclusions if evidence warrants it."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P12",
+      "topic": "Scientific collaboration",
+      "specification_sections": [
+        "1.3.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 63,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "Laboratories in several countries jointly monitor a changing coastline. Explain one benefit of sharing equipment or data and one different benefit of sharing expertise.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Shared equipment/data increases access, coverage, sample size or efficient use of resources in the coastline study."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Combining expertise provides complementary skills or better interpretation/problem-solving."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Shared monitoring data can cover a larger area than one laboratory could study. Different specialists can combine skills to interpret the coastal changes.",
+      "common_misconception": "Collaborating internationally automatically removes all bias.",
+      "hints": [
+        "Separate access to resources from access to people\u2019s knowledge.",
+        "Link each benefit to what the team could do better."
+      ],
+      "follow_up": "Why would the laboratories need compatible measurement methods?",
+      "retest": {
+        "question": "Teams share telescope observations and astronomy expertise. Explain one resource benefit and one expertise benefit.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Sharing observations/equipment improves coverage, access or efficiency."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Combining expertise improves analysis or interpretation."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P13",
+      "topic": "Scientific collaboration",
+      "specification_sections": [
+        "1.3.2",
+        "1.4"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 64,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "A team investigates fish deaths in a reservoir. Describe one useful contribution from a chemist and one from a biologist.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Chemist measures or analyses water chemistry, such as pollutants, dissolved oxygen or pH."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Biologist investigates organisms, disease or ecological effects relevant to the fish deaths."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "A chemist could analyse the water for contaminants. A biologist could examine the fish and other organisms for disease or ecological effects.",
+      "common_misconception": "Scientific disciplines always operate separately with no overlap.",
+      "hints": [
+        "Think about properties of the water and the living organisms.",
+        "Give each scientist a task linked to the investigation."
+      ],
+      "follow_up": "How might the two scientists combine their evidence to explain the deaths?",
+      "retest": {
+        "question": "Scientists investigate damaged woodland. Give one useful chemistry task and one useful biology task.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Analyse relevant soil, water or air chemistry/pollution."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Investigate organisms, disease, populations or ecological effects."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P14",
+      "topic": "Types of data",
+      "specification_sections": [
+        "2.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 64,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Classify",
+      "question": "A student records a solution as \"cloudy\" and its volume as 25.0 mL. Classify each result as qualitative or quantitative.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Cloudy is qualitative."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "25.0 mL is quantitative."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Cloudy is qualitative because it describes a quality. The measured volume is quantitative because it is numerical.",
+      "common_misconception": "All laboratory observations are quantitative.",
+      "hints": [
+        "Ask whether the record describes a quality or gives a numerical quantity.",
+        "A measurement with a value and unit is different from a descriptive observation."
+      ],
+      "follow_up": "Would giving colour categories numbers automatically turn them into measured quantities?",
+      "retest": {
+        "question": "A sample is recorded as \"rough\" and as having a mass of 7.2 g. Classify each record.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Rough is qualitative."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "7.2 g is quantitative."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P15",
+      "topic": "Types of data",
+      "specification_sections": [
+        "2.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 64,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Classify",
+      "question": "Classify the number of seedlings in a tray and the measured height of a seedling as discrete or continuous data.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Number of seedlings is discrete."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Seedling height is continuous, despite limited instrument precision."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The seedling count is discrete. Height is continuous, even though it is recorded to the ruler\u2019s available precision.",
+      "common_misconception": "Rounding a measurement makes the underlying variable discrete.",
+      "hints": [
+        "A count and a measurement can both be numerical but have different possible values.",
+        "Think about values that could exist between two recorded heights."
+      ],
+      "follow_up": "Does recording height to the nearest centimetre change the underlying type of variable?",
+      "retest": {
+        "question": "Classify the number of insects on a leaf and the temperature of the leaf as discrete or continuous.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "The insect count is discrete."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Temperature is continuous."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P16",
+      "topic": "Types of data",
+      "specification_sections": [
+        "2.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 64,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Apply",
+      "question": "A student measures a stream\u2019s temperature herself and also uses last year\u2019s measurements published by a council. Classify each dataset as primary or secondary for this student.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Her own collected measurements are primary data for her investigation."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "The council\u2019s existing measurements are secondary data for her investigation."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The measurements she collects are primary data. The council\u2019s previously collected measurements are secondary data for her.",
+      "common_misconception": "Secondary data must be inaccurate or non-numerical.",
+      "hints": [
+        "The distinction depends on who collected the data for the investigation.",
+        "Age alone does not determine whether data are primary or secondary."
+      ],
+      "follow_up": "What should she check before comparing her measurements with the council\u2019s?",
+      "retest": {
+        "question": "A researcher counts birds and also analyses a published survey collected by another team. Classify the data sources from this researcher\u2019s perspective.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Own bird counts are primary."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "The other team\u2019s published survey is secondary."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P17",
+      "topic": "Interpreting data",
+      "specification_sections": [
+        "2.4.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 65,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Calculate",
+      "question": "A sample contains 60 water tests, of which 15 exceed a threshold. Calculate the percentage that exceed it. Show your working.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Uses (15 / 60) x 100 or an equivalent valid percentage method."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Gives 25%. Correct final answer alone earns both marks; do not require an explicit formula if correct working is clear."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "(15 / 60) x 100 = 25%.",
+      "common_misconception": "A proportion of 0.25 is already a percentage of 0.25%.",
+      "hints": [
+        "Identify the part and the whole.",
+        "Convert the fraction of the whole to a value out of one hundred."
+      ],
+      "follow_up": "Why would dividing 60 by 15 give the wrong proportion?",
+      "retest": {
+        "question": "Of 80 samples, 12 fail a check. What percentage fail? Show your working.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Uses (12 / 80) x 100 or equivalent."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "15%; correct final answer alone earns both marks."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending",
+      "credit_dependencies": {
+        "P2": [
+          "P1"
+        ]
+      }
+    },
+    {
+      "id": "F181-P18",
+      "topic": "Interpreting data",
+      "specification_sections": [
+        "2.4.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 65,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Calculate",
+      "question": "A sensor\u2019s reading falls from 80 units to 60 units. Calculate the percentage decrease relative to the original reading. Show your working.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "Uses the decrease of 20 divided by the original 80, then multiplied by 100, or equivalent."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Gives a 25% decrease. Correct final answer alone earns both marks."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The decrease is 80 - 60 = 20. Percentage decrease = (20 / 80) x 100 = 25%.",
+      "common_misconception": "Percentage change is calculated using the final value as the denominator.",
+      "hints": [
+        "First find the change in the reading.",
+        "The question asks for change relative to the starting value."
+      ],
+      "follow_up": "Why is the original reading the denominator?",
+      "retest": {
+        "question": "A quantity falls from 120 to 90 units. Calculate the percentage decrease relative to the starting value.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Uses (30 / 120) x 100 or equivalent."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "25% decrease; correct final answer alone earns both marks."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending",
+      "credit_dependencies": {
+        "P2": [
+          "P1"
+        ]
+      }
+    },
+    {
+      "id": "F181-P19",
+      "topic": "Interpreting data",
+      "specification_sections": [
+        "2.4.1"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 65,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Evaluate",
+      "question": "On hotter days, a town records both more ice-cream sales and more heat-related illness. Someone concludes that buying ice cream causes the illness. Give two reasons why the observations do not establish that conclusion.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "The observations show an association, not an intervention or evidence establishing that buying ice cream causes illness; other explanations remain."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Temperature is a plausible common influence that could increase both ice-cream sales and heat-related illness."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "The association alone does not establish the proposed causal link. Hot weather could increase both ice-cream sales and heat-related illness.",
+      "common_misconception": "Whenever two variables move together, one must cause the other.",
+      "hints": [
+        "Think about what was measured and what was not tested.",
+        "Look for another factor mentioned in the situation."
+      ],
+      "follow_up": "What further information could help distinguish the competing explanations?",
+      "retest": {
+        "question": "In a town, umbrella use and wet roads occur together. Explain why this does not show that umbrellas make roads wet.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "An association alone does not establish that causal direction."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Rain can cause both umbrella use and wet roads."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    },
+    {
+      "id": "F181-P20",
+      "topic": "Collecting data",
+      "specification_sections": [
+        "2.2"
+      ],
+      "source": {
+        "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+        "version": "7.0 June 2026",
+        "pdf_page": 65,
+        "supports": "Syllabus scope; the question and practice rubric are generated."
+      },
+      "demand": "Evaluate",
+      "question": "A council asks only members of a cycling club whether new cycle lanes should be built. It reports the answers as the view of all residents. Identify the sampling problem and suggest a better way to select respondents.",
+      "max_marks": 2,
+      "marking_points": [
+        {
+          "id": "P1",
+          "marks": 1,
+          "criterion": "The selected group is not representative of all residents and may have systematically different views, producing selection bias."
+        },
+        {
+          "id": "P2",
+          "marks": 1,
+          "criterion": "Use a suitable random sample from a broad resident sampling frame, or a justified stratified sample covering relevant resident groups. Merely asking more cyclists is insufficient."
+        }
+      ],
+      "marking_rules": [
+        "Accept scientifically equivalent wording; keywords alone are not required.",
+        "Award each point at most once. Repetition does not create another point.",
+        "Withhold a point if the answer directly contradicts that same point. Do not erase unrelated correct points.",
+        "No attempt is recorded as unattempted, with score null; a wrong attempt can score zero.",
+        "These are provisional practice marks, not an official OCR mark scheme."
+      ],
+      "model_answer": "Cycling club members may have different views from other residents, so the sample can be biased. A random sample from a broad list of residents would give wider groups a chance of selection.",
+      "common_misconception": "Increasing a biased sample\u2019s size automatically removes its bias.",
+      "hints": [
+        "Consider who has no chance of being asked.",
+        "Change how respondents are selected, not just how many are selected."
+      ],
+      "follow_up": "Why might an open online poll still attract a biased set of respondents?",
+      "retest": {
+        "question": "A school asks only its sports teams about all students\u2019 exercise habits. Identify the bias and improve the sampling plan.",
+        "max_marks": 2,
+        "marking_points": [
+          {
+            "id": "R1",
+            "marks": 1,
+            "criterion": "Sports-team members may not represent all students\u2019 activity levels."
+          },
+          {
+            "id": "R2",
+            "marks": 1,
+            "criterion": "Random or appropriately stratified sampling across the whole student population."
+          }
+        ]
+      },
+      "review_status": "Author checked against syllabus; independent teacher review pending"
+    }
+  ]
+}
