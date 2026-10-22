@@ -15,9 +15,10 @@ def project(bank,attempts,now):
         history=[a for a in attempts if a['question_id'] in skill['question_ids']];latest=history[-1] if history else None
         setback=max((i for i,a in enumerate(history) if a['outcome']!='independent'),default=-1)
         independent=[a for a in history[setback+1:] if a['outcome']=='independent' and not a['hints'] and not a['student_saw_answer']]
-        items={item(a) for a in independent};days={time(a).date() for a in independent}
-        span=time(independent[-1])-time(independent[0]) if independent else dt.timedelta()
-        applied=any((questions[a['question_id']]['retest'] if a['variant']=='retest' else questions[a['question_id']]).get('demand')=='Application' for a in independent)
+        eligible=[a for a in independent if (questions[a['question_id']]['retest'] if a['variant']=='retest' else questions[a['question_id']]).get('demand')!='Integrated']
+        items={item(a) for a in eligible};days={time(a).date() for a in eligible}
+        span=time(eligible[-1])-time(eligible[0]) if eligible else dt.timedelta()
+        applied=any((questions[a['question_id']]['retest'] if a['variant']=='retest' else questions[a['question_id']]).get('demand')=='Application' for a in eligible)
         status='untested' if not latest else 'improving' if latest['outcome']=='independent' else 'needs_work'
         if len(items)>=3 and len(days)>=3 and span>=7*DAY and applied:status='secure'
         interval=7 if status=='secure' else 1

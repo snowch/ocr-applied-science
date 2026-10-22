@@ -8,6 +8,7 @@ test('secure evidence requires different items, three days, a week and applicati
  assert.equal(get([]).status,'untested');assert.equal(get([attempt(forms[0],0)]).status,'improving');
  assert.equal(get([attempt(forms[0],8),attempt(forms[0],4),attempt(forms[0],0)]).status,'improving');
  assert.equal(get([attempt(forms[0],8),attempt(forms[2],4),attempt(forms[3],0)]).status,'improving');
+ assert.equal(get([attempt(forms[0],8),attempt(forms[1],4),attempt(forms[3],0)]).status,'improving');
  assert.equal(get([attempt(forms[0],8),attempt(forms[1],4),attempt(forms[2],0)]).status,'secure');
 });
 test('new difficulty reopens a secure gap and undo restores the prior evidence',()=>{

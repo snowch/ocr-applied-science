@@ -13,10 +13,11 @@ function project(bank,attempts,now=Date.now()){
   // A later difficulty reopens the gap. Only evidence since that difficulty counts.
   let setback=-1;history.forEach((a,i)=>{if(a.outcome!=='independent')setback=i;});
   const independent=history.slice(setback+1).filter(a=>a.outcome==='independent'&&!a.hints&&!a.student_saw_answer);
-  const items=new Set(independent.map(a=>{const q=lookup.get(a.question_id);return a.variant==='retest'?(q.retest.item_key||q.id+'-R'):(q.item_key||q.id);}));
-  const days=new Set(independent.map(a=>new Date(a.created_at).toISOString().slice(0,10)));
-  const span=independent.length?Date.parse(independent.at(-1).created_at)-Date.parse(independent[0].created_at):0;
-  const applied=independent.some(a=>{const q=lookup.get(a.question_id);return a.variant==='retest'?q.retest.demand==='Application':q.demand==='Application';});
+  const eligible=independent.filter(a=>{const q=lookup.get(a.question_id);return (a.variant==='retest'?q.retest.demand:q.demand)!=='Integrated';});
+  const items=new Set(eligible.map(a=>{const q=lookup.get(a.question_id);return a.variant==='retest'?(q.retest.item_key||q.id+'-R'):(q.item_key||q.id);}));
+  const days=new Set(eligible.map(a=>new Date(a.created_at).toISOString().slice(0,10)));
+  const span=eligible.length?Date.parse(eligible.at(-1).created_at)-Date.parse(eligible[0].created_at):0;
+  const applied=eligible.some(a=>{const q=lookup.get(a.question_id);return a.variant==='retest'?q.retest.demand==='Application':q.demand==='Application';});
   if(latest){status=latest.outcome==='independent'?'improving':'needs_work';if(items.size>=3&&days.size>=3&&span>=7*DAY&&applied)status='secure';interval=status==='secure'?7:1;}
   const due=Boolean(latest&&now-Date.parse(latest.created_at)>=interval*DAY);
   const gaps=[...new Set(history.slice(-5).flatMap(a=>a.ai_review?.gap_tags||[]))];
