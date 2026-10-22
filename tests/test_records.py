@@ -79,6 +79,19 @@ class RecordTests(unittest.TestCase):
         self.assertEqual(saved['outcome'],'hint')
         with self.assertRaises(urllib.error.HTTPError):self.request(self.student,'/api/attempts',self.answer(question_id=q['id'],answer=answer,assessment_origin='ai'))
 
+    def test_not_taught_syncs_without_recording_failure_and_ready_restores_practice(self):
+        skill=server.BANK['questions'][0]['skill_id'];body={'id':str(uuid.uuid4()),'skill_id':skill,'status':'not_taught','mode':'self'}
+        self.request(self.student,'/api/teaching-status',body);self.request(self.student,'/api/teaching-status',body)
+        state=self.request(self.parent,'/api/state');self.assertEqual(state['total_attempts'],0)
+        self.assertEqual(next(s for s in state['skills'] if s['id']==skill)['status'],'not_taught')
+        self.assertFalse(any(q['skill_id']==skill for q in state['recommendations']))
+        self.assertEqual(len(server.STORE.all()),1)
+        self.request(self.parent,'/api/teaching-status',{**body,'id':str(uuid.uuid4()),'status':'ready','mode':'parent'})
+        state=self.request(self.student,'/api/state');self.assertEqual(state['total_attempts'],0)
+        self.assertEqual(next(s for s in state['skills'] if s['id']==skill)['status'],'untested')
+        self.assertTrue(any(q['skill_id']==skill for q in state['recommendations']))
+        self.assertEqual(len(server.STORE.all()),2)
+
     def test_invalid_question_and_cross_origin_write_are_rejected(self):
         for body,origin,code in [(self.answer(question_id='other'),None,400),(self.answer(),'https://unrelated.example',403)]:
             with self.assertRaises(urllib.error.HTTPError) as error:self.request(self.parent,'/api/attempts',body,origin)

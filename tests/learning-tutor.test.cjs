@@ -51,3 +51,15 @@ test('saved AI-derived outcomes are recomputed, not trusted from a supplied rati
  await assert.rejects(()=>store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000004',ai_review:{status:'needs_clarification',met_points:[],evidence:{},gap_tags:[]}}));
  await assert.rejects(()=>store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000005',ai_review:null}));
 });
+test('not learned yet is curriculum state, not a failed attempt, and ready restores prior evidence',async()=>{
+ class Memory{constructor(){this.m=new Map()}get length(){return this.m.size}key(i){return [...this.m.keys()][i]}getItem(k){return this.m.get(k)||null}setItem(k,v){this.m.set(k,String(v))}}
+ const storage=new Memory(),store=new context.RevisionBrowserStore(bank,storage),id=skill.id;
+ const body={id:'20000000-0000-4000-8000-000000000001',skill_id:id,status:'not_taught',mode:'self'};
+ await store.request('/api/teaching-status',body);await store.request('/api/teaching-status',body);
+ let state=store.state();assert.equal(store.events().length,1);assert.equal(state.total_attempts,0);assert.equal(state.skills.find(s=>s.id===id).status,'not_taught');assert.equal(state.skills.find(s=>s.id===id).due,false);assert.ok(!state.recommendations.some(q=>q.skill_id===id));assert.notEqual(state.suggested.skill_id,id);
+ const first=storage.getItem(storage.key(0));await store.request('/api/teaching-status',{...body,id:'20000000-0000-4000-8000-000000000002',status:'ready',mode:'parent'});state=store.state();assert.equal(state.skills.find(s=>s.id===id).status,'untested');assert.equal(state.total_attempts,0);assert.ok(state.recommendations.some(q=>q.skill_id===id));assert.equal(storage.getItem(storage.key(0)),first);
+ const answer={id:'20000000-0000-4000-8000-000000000003',question_id:forms[0].id,variant:'main',mode:'parent',outcome:'independent',hints:0,student_saw_answer:false,answer:'A synthetic explanation.',note:''};await store.request('/api/attempts',answer);
+ await store.request('/api/teaching-status',{...body,id:'20000000-0000-4000-8000-000000000004'});assert.equal(store.state().total_attempts,1);assert.equal(store.state().skills.find(s=>s.id===id).knowledge_status,'improving');
+ await store.request('/api/teaching-status',{...body,id:'20000000-0000-4000-8000-000000000005',status:'ready'});assert.equal(store.state().skills.find(s=>s.id===id).status,'improving');
+ await assert.rejects(()=>store.request('/api/teaching-status',{...body,skill_id:'unknown'}));await assert.rejects(()=>store.request('/api/teaching-status',{...body,status:'mastered'}));
+});

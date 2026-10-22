@@ -40,7 +40,7 @@ class EventStore:
         except (ValueError,UnicodeError):raise CorruptEvent('Unreadable event: '+path.name) from None
         try:
             valid=(event['schema_version']==1 and event['event_id']==path.stem and
-                   event['type'] in ('answer_observed','observation_retracted') and
+                   event['type'] in ('answer_observed','observation_retracted','teaching_status_changed') and
                    isinstance(event['payload'],dict) and
                    event['payload_sha256']==hashlib.sha256(canonical(event['payload'])).hexdigest() and
                    dt.datetime.fromisoformat(event['recorded_at']).utcoffset() is not None)
@@ -49,7 +49,7 @@ class EventStore:
         return event
 
     def append(self,event_id,event_type,payload):
-        if event_type not in ('answer_observed','observation_retracted') or not isinstance(payload,dict):
+        if event_type not in ('answer_observed','observation_retracted','teaching_status_changed') or not isinstance(payload,dict):
             raise ValueError('Invalid event')
         self.initialise();path=self._path(event_id)
         digest=hashlib.sha256(canonical(payload)).hexdigest()

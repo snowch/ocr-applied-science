@@ -61,3 +61,7 @@ An answer payload may also contain `elapsed_seconds` (integer 0–86400) and `ai
 The Google Drive section above is historical design exploration and is not used by the current app.
 
 `assessment_origin: "ai"` identifies an automatically derived outcome. For this source the client and local server require a validated attempted AI review and recompute the outcome, ignoring any supplied rating: full marks without recorded help yields `independent`, full marks with help yields `hint`, otherwise `practice`. Shared reads reject inconsistent AI-derived outcomes. Without this optional field, historical records remain manual judgements in the chosen mode. Ambiguous or unattempted AI reviews cannot create automatic outcomes.
+
+## Teaching coverage events
+
+A `teaching_status_changed` event has payload `student_id`, `skill_id`, `status` (`not_taught` or `ready`) and `mode` (`self` or `parent`). The envelope supplies the immutable event ID and recorded time. The latest event per skill controls coverage. These events are not attempts and do not add zero marks, failures or assessments. Marking ready appends a new event rather than changing the original; prior knowledge evidence remains intact. Not-taught skills are excluded from suggested/recommended/random practice and AI-coach priorities, but explicit manual selection remains available.

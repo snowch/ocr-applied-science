@@ -12,7 +12,7 @@
         const key = this.storage.key(i);
         if (!key.startsWith(this.prefix)) continue;
         const event = JSON.parse(this.storage.getItem(key));
-        if (event.schema_version !== 1 || !['answer_observed', 'observation_retracted'].includes(event.type)) {
+        if (event.schema_version !== 1 || !['answer_observed', 'observation_retracted', 'teaching_status_changed'].includes(event.type)) {
           throw Error('A saved record could not be read. Back up your records before making changes.');
         }
         events.push(event);
@@ -31,14 +31,13 @@
       this.storage.setItem(key, JSON.stringify(event));
       return event;
     }
-    attempts() {
-      const events = this.events();
+    attempts(events = this.events()) {
       const withdrawn = new Set(events.filter(e => e.type === 'observation_retracted').map(e => e.payload.target_event_id));
       return events.filter(e => e.type === 'answer_observed' && !withdrawn.has(e.event_id))
         .map(e => ({ ...e.payload, id: e.event_id, created_at: e.recorded_at }));
     }
     state() {
-      const attempts = this.attempts(), topics = new Map(), now = Date.now();
+      const allEvents = this.events(), attempts = this.attempts(allEvents), topics = new Map(), now = Date.now();
       const questions = this.bank.questions.map(q => {
         const history = attempts.filter(a => a.question_id === q.id), latest = history.at(-1);
         const status = latest?.outcome || 'new';
@@ -53,8 +52,8 @@
       });
       const rank = q => ['hint', 'practice'].includes(q.status) ? 0 : q.due ? 1 : q.status === 'new' ? 2 : 3;
       const ordered = [...questions].sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id));
-      const learning = global.RevisionLearning?.project(this.bank, attempts) || {};
-      return { ...learning, questions, topics: [...topics.values()], recent: [...attempts].reverse().slice(0, 20), suggested: ordered[0], total_attempts: attempts.length, server_time: new Date().toISOString() };
+      const learning = global.RevisionLearning?.project(this.bank, attempts, now, allEvents.filter(e => e.type === 'teaching_status_changed')) || {};
+      return { ...learning, questions, topics: [...topics.values()], recent: [...attempts].reverse().slice(0, 20), suggested: learning.recommendations ? (questions.find(q => q.id === learning.recommendations[0]?.id) || null) : ordered[0], total_attempts: attempts.length, server_time: new Date().toISOString() };
     }
     async request(path, body) {
       const url = new URL(path, 'https://preview.invalid');
@@ -67,6 +66,11 @@
         return { ...q, ...item, id: q.id, item_key: item.item_key || (variant === 'main' ? q.id : q.id + '-R'), variant, unit: q.unit || 'F181', topic: q.topic, question: item.question, source: q.source,
           hints: variant === 'main' ? q.hints : ['Think back to the concept you practised. Try explaining it in your own words.'],
           marking_points: item.marking_points, model_answer: variant === 'main' ? q.model_answer : item.marking_points.map(p => p.criterion).join(' ') };
+      }
+      if (url.pathname === '/api/teaching-status') {
+        if (!body || !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(body.id) || !this.bank.questions.some(q => (q.skill_id || q.id) === body.skill_id) || !['not_taught','ready'].includes(body.status) || !['self','parent'].includes(body.mode)) throw Error('Invalid teaching status.');
+        this.append(body.id, 'teaching_status_changed', {student_id:'practice-learner',skill_id:body.skill_id,status:body.status,mode:body.mode});
+        return {ok:true};
       }
       if (url.pathname === '/api/attempts') {
         if (!body || !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(body.id) ||

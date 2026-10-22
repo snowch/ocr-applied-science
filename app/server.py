@@ -23,8 +23,8 @@ STORE=EventStore(ROOT.parent/'data'/'events')
 def initialise():
     STORE.initialise()
 
-def read_attempts():
-    events=STORE.all()
+def read_attempts(events=None):
+    if events is None:events=STORE.all()
     withdrawn={event['payload']['target_event_id'] for event in events if event['type']=='observation_retracted'}
     return [{**event['payload'],'id':event['event_id'],'created_at':event['recorded_at']}
             for event in events if event['type']=='answer_observed' and event['event_id'] not in withdrawn]
@@ -62,6 +62,13 @@ def record(body):
     event=STORE.append(identifier,'answer_observed',payload)
     return {**event['payload'],'id':event['event_id'],'created_at':event['recorded_at']}
 
+def teaching_status(body):
+    if not isinstance(body,dict):raise ValueError('Invalid teaching status')
+    identifier=str(uuid.UUID(body.get('id','')));skill=body.get('skill_id')
+    if not any(q.get('skill_id',q['id'])==skill for q in QUESTIONS.values()) or body.get('status') not in ('not_taught','ready') or body.get('mode') not in ('self','parent'):raise ValueError('Invalid teaching status')
+    STORE.append(identifier,'teaching_status_changed',{'student_id':'practice-learner','skill_id':skill,'status':body['status'],'mode':body['mode']})
+    return {'ok':True}
+
 def retract(identifier):
     identifier=str(uuid.UUID(identifier))
     target=STORE.get(identifier)
@@ -70,7 +77,7 @@ def retract(identifier):
     STORE.append(event_id,'observation_retracted',{'target_event_id':identifier,'student_id':'practice-learner'})
 
 def state():
-    attempts=read_attempts();now=dt.datetime.now(UTC)
+    events=STORE.all();attempts=read_attempts(events);now=dt.datetime.now(UTC)
     result=[];topics={}
     for qid,q in QUESTIONS.items():
         history=[a for a in attempts if a['question_id']==qid]
@@ -91,8 +98,10 @@ def state():
         topic['needs_practice']+=int(status in ('hint','practice'))
         topic['retested']+=int(retained)
     ordered=sorted(result,key=lambda q:(0 if q['status'] in ('hint','practice') else 1 if q['due'] else 2 if q['status']=='new' else 3,q['id']))
-    return {**project(BANK,attempts,now),'questions':result,'topics':list(topics.values()),'recent':list(reversed(attempts))[:20],
-            'suggested':ordered[0] if ordered else None,'total_attempts':len(attempts),'server_time':now.isoformat()}
+    learning=project(BANK,attempts,now,[e for e in events if e['type']=='teaching_status_changed'])
+    recommended=learning['recommendations'][0]['id'] if learning['recommendations'] else None
+    return {**learning,'questions':result,'topics':list(topics.values()),'recent':list(reversed(attempts))[:20],
+            'suggested':next((q for q in result if q['id']==recommended),None),'total_attempts':len(attempts),'server_time':now.isoformat()}
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self,*args): pass
@@ -133,6 +142,7 @@ class Handler(BaseHTTPRequestHandler):
             if not 0<length<=12000:raise ValueError('Invalid request size')
             if self.headers.get('Content-Type','').split(';')[0]!='application/json':raise ValueError('Expected JSON')
             body=json.loads(self.rfile.read(length))
+            if self.path=='/api/teaching-status':return self.send_json(200,teaching_status(body))
             if self.path=='/api/attempts':return self.send_json(200,record(body))
             if self.path=='/api/undo':
                 identifier=str(uuid.UUID(body.get('id','')))
