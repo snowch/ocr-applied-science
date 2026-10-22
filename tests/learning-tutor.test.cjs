@@ -36,3 +36,18 @@ test('AI progress review uses longitudinal skill evidence and rejects invented s
  let sent;let invented=false;const c=vm.createContext({Date,URL,AbortSignal,localStorage:{getItem:()=>JSON.stringify({key:'test-key',model:'mistral-small-latest'})},sessionStorage:{getItem:()=>null},fetch:async(url,options)=>{sent=JSON.parse(options.body);return {ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({summary:'A later difficulty reopened this gap.',priorities:[{skill_id:invented?'not-a-skill':skill.id,reason:'Later answers needed help.',next_step:'Explain the mechanism, then attempt a different application.'}],next_session:'Repair this gap, then return tomorrow for a delayed check.'})}}]})}}});vm.runInContext(fs.readFileSync('app/static/tutor.js','utf8'),c);
  const skills=L.project(bank,[attempt(forms[0],2,{outcome:'practice'})],now).skills;const review=await c.RevisionTutor.coach(skills);assert.equal(review.priorities[0].skill_id,skill.id);const payload=JSON.parse(sent.messages[1].content);assert.equal(payload.skills[0].recent_evidence[0].outcome,'practice');assert.ok(!('answer' in payload.skills[0].recent_evidence[0]));invented=true;await assert.rejects(()=>c.RevisionTutor.coach(skills),/needs review/);
 });
+test('AI outcome uses validated marks and help, and never guesses on ambiguous answers',()=>{
+ const full={status:'attempted',score:2,max_marks:2},partial={status:'attempted',score:1,max_marks:2};
+ assert.equal(T.outcome(full,0,false),'independent');assert.equal(T.outcome(full,1,false),'hint');assert.equal(T.outcome(full,0,true),'hint');assert.equal(T.outcome(partial,0,false),'practice');assert.equal(T.outcome(partial,1,true),'practice');assert.throws(()=>T.outcome({status:'needs_clarification',score:null,max_marks:2},0,false));assert.throws(()=>T.outcome(null,0,false));
+});
+test('saved AI-derived outcomes are recomputed, not trusted from a supplied rating',async()=>{
+ class Memory{constructor(){this.m=new Map()}get length(){return this.m.size}key(i){return [...this.m.keys()][i]}getItem(k){return this.m.get(k)||null}setItem(k,v){this.m.set(k,String(v))}}
+ const store=new context.RevisionBrowserStore(bank,new Memory());const q=forms[0],answer=q.marking_points.map(p=>p.criterion).join(' ');
+ const review={status:'attempted',met_points:q.marking_points.map(p=>p.id),evidence:Object.fromEntries(q.marking_points.map(p=>[p.id,p.criterion])),gap_tags:[]};
+ const body={id:'10000000-0000-4000-8000-000000000001',question_id:q.id,variant:'main',mode:'self',outcome:'practice',hints:0,student_saw_answer:false,answer,note:'',assessment_origin:'ai',ai_review:review};
+ const saved=await store.request('/api/attempts',body);assert.equal(saved.outcome,'independent');assert.equal(saved.assessment_origin,'ai');
+ const supported=await store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000002',hints:1});assert.equal(supported.outcome,'hint');
+ const partial=await store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000003',outcome:'independent',ai_review:{...review,met_points:[q.marking_points[0].id]}});assert.equal(partial.outcome,'practice');
+ await assert.rejects(()=>store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000004',ai_review:{status:'needs_clarification',met_points:[],evidence:{},gap_tags:[]}}));
+ await assert.rejects(()=>store.request('/api/attempts',{...body,id:'10000000-0000-4000-8000-000000000005',ai_review:null}));
+});

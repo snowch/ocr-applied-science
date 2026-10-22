@@ -21,7 +21,7 @@ function project(bank,attempts,now=Date.now()){
   if(latest){status=latest.outcome==='independent'?'improving':'needs_work';if(items.size>=3&&days.size>=3&&span>=7*DAY&&applied)status='secure';interval=status==='secure'?7:1;}
   const due=Boolean(latest&&now-Date.parse(latest.created_at)>=interval*DAY);
   const gaps=[...new Set(history.slice(-5).flatMap(a=>a.ai_review?.gap_tags||[]))];
-  return {...skill,status,checks:history.length,independent_items:items.size,independent_days:days.size,last_checked:latest?.created_at||null,due,next_due:latest?new Date(Date.parse(latest.created_at)+interval*DAY).toISOString():null,gaps,history:history.slice(-8).map(a=>({id:a.id,date:a.created_at,outcome:a.outcome,mode:a.mode,ai_status:a.ai_review?.status||null,ai_score:a.ai_review?.score??null,ai_max_marks:a.ai_review?.max_marks??null})),latest_outcome:latest?.outcome||null};
+  return {...skill,status,checks:history.length,independent_items:items.size,independent_days:days.size,last_checked:latest?.created_at||null,due,next_due:latest?new Date(Date.parse(latest.created_at)+interval*DAY).toISOString():null,gaps,history:history.slice(-8).map(a=>({id:a.id,date:a.created_at,outcome:a.outcome,mode:a.mode,assessment_origin:a.assessment_origin||'manual',ai_status:a.ai_review?.status||null,ai_score:a.ai_review?.score??null,ai_max_marks:a.ai_review?.max_marks??null})),latest_outcome:latest?.outcome||null};
  });
  // Work on a gap, then give time for consolidation; avoid immediate repeated cramming.
  const scored=bank.questions.map(q=>{

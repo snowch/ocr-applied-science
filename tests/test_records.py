@@ -70,6 +70,15 @@ class RecordTests(unittest.TestCase):
         self.assertTrue(self.request(self.student,'/api/state')['questions'][next(i for i,q in enumerate(server.BANK['questions']) if q['id']=='F181-P01')]['later_retest'])
         self.assertEqual((server.STORE.directory/(first['id']+'.json')).read_bytes(),original)
         self.assertEqual(len(server.STORE.all()),4)
+    def test_ai_outcome_is_derived_and_source_is_saved(self):
+        q=server.BANK['questions'][0];answer=' '.join(p['criterion'] for p in q['marking_points'])
+        review={'status':'attempted','met_points':[p['id'] for p in q['marking_points']],'evidence':{p['id']:p['criterion'] for p in q['marking_points']},'gap_tags':[]}
+        saved=self.request(self.student,'/api/attempts',self.answer(question_id=q['id'],answer=answer,assessment_origin='ai',ai_review=review,outcome='practice'))
+        self.assertEqual(saved['outcome'],'independent');self.assertEqual(saved['assessment_origin'],'ai')
+        saved=self.request(self.student,'/api/attempts',self.answer(question_id=q['id'],answer=answer,assessment_origin='ai',ai_review=review,hints=1))
+        self.assertEqual(saved['outcome'],'hint')
+        with self.assertRaises(urllib.error.HTTPError):self.request(self.student,'/api/attempts',self.answer(question_id=q['id'],answer=answer,assessment_origin='ai'))
+
     def test_invalid_question_and_cross_origin_write_are_rejected(self):
         for body,origin,code in [(self.answer(question_id='other'),None,400),(self.answer(),'https://unrelated.example',403)]:
             with self.assertRaises(urllib.error.HTTPError) as error:self.request(self.parent,'/api/attempts',body,origin)

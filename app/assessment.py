@@ -16,3 +16,7 @@ def validate(question,answer,data):
     for trigger,implied in question.get('credit_dependencies',{}).items():
         if trigger in credit:credit.update(i for i in implied if i in allowed)
     return {'source':'mistral','status':data['status'],'met_points':ids,'evidence':quotes,'score':sum(allowed[i]['marks'] for i in credit) if data['status']=='attempted' else None,'max_marks':question.get('max_marks',sum(p['marks'] for p in allowed.values())),'gap_tags':list(dict.fromkeys(gaps)),'next_question':data.get('next_question','')[:500] if isinstance(data.get('next_question',''),str) else '', 'model':data.get('model','mistral-small-latest')[:100] if isinstance(data.get('model',''),str) else 'mistral-small-latest'}
+
+def outcome(review,hints,saw):
+    if not review or review['status']!='attempted':raise ValueError('Clarify the answer before saving an AI result')
+    return 'practice' if review['score']<review['max_marks'] else 'hint' if hints or saw else 'independent'

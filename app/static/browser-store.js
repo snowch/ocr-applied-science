@@ -81,9 +81,11 @@
           const item = body.variant === 'main' ? q : q.retest;
           ai_review = global.RevisionTutor.validate(item, body.answer.trim(), body.ai_review);
         }
+        if (body.assessment_origin !== undefined && body.assessment_origin !== 'ai') throw Error('Invalid assessment source.');
+        const outcome = body.assessment_origin === 'ai' ? global.RevisionTutor.outcome(ai_review, body.hints, body.student_saw_answer) : body.outcome === 'independent' && (body.hints || body.student_saw_answer) ? 'hint' : body.outcome;
         if (body.elapsed_seconds !== undefined && (!Number.isInteger(body.elapsed_seconds) || body.elapsed_seconds < 0 || body.elapsed_seconds > 86400)) throw Error('Invalid timing record.');
-        const payload = { ...(body.elapsed_seconds !== undefined ? {elapsed_seconds:body.elapsed_seconds} : {}), ...(ai_review ? { ai_review } : {}), student_id: 'practice-learner', question_id: body.question_id, question_version: this.bank.version,
-          variant: body.variant, mode: body.mode, outcome: body.outcome === 'independent' && (body.hints || body.student_saw_answer) ? 'hint' : body.outcome,
+        const payload = { ...(body.assessment_origin === 'ai' ? {assessment_origin:'ai'} : {}), ...(body.elapsed_seconds !== undefined ? {elapsed_seconds:body.elapsed_seconds} : {}), ...(ai_review ? { ai_review } : {}), student_id: 'practice-learner', question_id: body.question_id, question_version: this.bank.version,
+          variant: body.variant, mode: body.mode, outcome,
           hints: body.hints, student_saw_answer: body.student_saw_answer, answer: body.answer.trim(), note: body.note.trim() };
         const event = this.append(body.id, 'answer_observed', payload);
         return { ...event.payload, id: event.event_id, created_at: event.recorded_at };

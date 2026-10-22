@@ -12,7 +12,7 @@ import uuid
 from urllib.parse import urlparse, parse_qs
 from .event_store import EventStore
 from .learning import project
-from .assessment import validate as validate_review
+from .assessment import validate as validate_review, outcome as ai_outcome
 
 ROOT=Path(__file__).parent
 BANK=json.loads((ROOT.parent/'content'/'exam-question-bank.json').read_text())
@@ -51,6 +51,10 @@ def record(body):
              'student_saw_answer':saw,'answer':answer.strip(),'note':note.strip()}
     if body.get('ai_review'):
         q=QUESTIONS[qid];payload['ai_review']=validate_review(q if variant=='main' else q['retest'],answer.strip(),body['ai_review'])
+    if 'assessment_origin' in body:
+        if body['assessment_origin']!='ai':raise ValueError('Invalid assessment source')
+        payload['outcome']=ai_outcome(payload.get('ai_review'),hints,saw)
+        payload['assessment_origin']='ai'
     if 'elapsed_seconds' in body:
         elapsed=body['elapsed_seconds']
         if type(elapsed) is not int or not 0<=elapsed<=86400:raise ValueError('Invalid timing')
