@@ -76,3 +76,15 @@ Node is optional for running the app and is used only for the JavaScript syntax 
 - Optional rubric-based AI marking with ambiguous answers routed for clarification.
 
 Google Drive is not connected yet. The local prototype is not a publicly deployed or authenticated service. It must not be exposed directly to the internet.
+
+### Shared family storage
+
+On the hosted app, open **Storage** and import the same private Upstash connection JSON on parent and student devices. Alternatively enter a REST URL, restricted token and `f181:events` key. No Google setup is needed. Remember the connection only on trusted devices; the token permits reading every family observation. Never commit the connection file.
+
+The JSON fields are `url`, `token`, `key` and optional `trial_expires`. Configure a dedicated Upstash ACL user with only `+hgetall +hget +hsetnx`, `-@all` before those grants, and `~f181:events`. Upstash requires a password from `ACL GENTOKEN username`; use that returned token as the password and REST bearer token. Do not put the database owner token in the app.
+
+Each observation is a field in the hash. HSETNX creates it once; undo adds a retraction. The restricted token cannot overwrite or delete existing records. Database owners retain administrative access. Each device caches records locally and retries pending saves when online. The status banner distinguishes pending/offline saves from confirmed sync. Open Understanding or tap Refresh to fetch another device’s changes. Device-only history stays separate when connecting; switching stores does not copy records between families. Disconnect is blocked while saves are pending. Back up observations before clearing browser data. This is a simple shared family token, without individual accounts or authorship verification.
+
+Temporary trial databases expire after 72 hours unless claimed. Use synthetic observations until claimed, and claim before the displayed expiry to keep the data. This version is a responsive web app; offline installation and service-worker caching are not implemented.
+
+Run `node --test tests/*.test.cjs` for browser storage tests. For an isolated live check, set `F181_LIVE_CONNECTION` to a private JSON using a separate `f181:test:events` key and restricted token. Never use real learner records in this test.

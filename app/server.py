@@ -103,7 +103,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send_json(200,{'id':qid,'variant':variant,'topic':q['topic'],'question':item['question'],'source':q['source'],
                 'hints':q['hints'] if variant=='main' else ['Think back to the concept you practised. Try explaining it in your own words.'],
                 'marking_points':item['marking_points'],'model_answer':q['model_answer'] if variant=='main' else ' '.join(p['criterion'] for p in item['marking_points'])})
-        if url.path in ('/','/app.js','/style.css','/config.js','/browser-store.js'):
+        if url.path in ('/','/app.js','/style.css','/config.js','/browser-store.js','/upstash-store.js'):
             name='index.html' if url.path=='/' else url.path[1:]
             data=(ROOT/'static'/name).read_bytes();self.send_response(200)
             self.send_header('Content-Type','text/html; charset=utf-8' if url.path=='/' else 'text/css; charset=utf-8' if name.endswith('.css') else 'text/javascript; charset=utf-8')

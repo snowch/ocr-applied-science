@@ -5,12 +5,12 @@
   const DAY = 24 * 60 * 60 * 1000;
   const stable = value => JSON.stringify(value, Object.keys(value).sort());
   class RevisionBrowserStore {
-    constructor(bank, storage) { this.bank = bank; this.storage = storage; }
+    constructor(bank, storage, prefix = PREFIX) { this.bank = bank; this.storage = storage; this.prefix = prefix; }
     events() {
       const events = [];
       for (let i = 0; i < this.storage.length; i++) {
         const key = this.storage.key(i);
-        if (!key.startsWith(PREFIX)) continue;
+        if (!key.startsWith(this.prefix)) continue;
         const event = JSON.parse(this.storage.getItem(key));
         if (event.schema_version !== 1 || !['answer_observed', 'observation_retracted'].includes(event.type)) {
           throw Error('A saved record could not be read. Back up your records before making changes.');
@@ -20,7 +20,7 @@
       return events.sort((a, b) => a.recorded_at.localeCompare(b.recorded_at) || a.event_id.localeCompare(b.event_id));
     }
     append(id, type, payload) {
-      const key = PREFIX + id;
+      const key = this.prefix + id;
       const prior = this.storage.getItem(key);
       if (prior) {
         const event = JSON.parse(prior);

@@ -6,7 +6,7 @@ import shutil
 ROOT=Path(__file__).resolve().parent.parent
 OUTPUT=ROOT/'dist'
 OUTPUT.mkdir(exist_ok=True)
-for name in ('index.html','style.css','app.js','browser-store.js'):
+for name in ('index.html','style.css','app.js','browser-store.js','upstash-store.js'):
     shutil.copyfile(ROOT/'app'/'static'/name,OUTPUT/name)
 shutil.copyfile(ROOT/'content'/'f181-question-bank.json',OUTPUT/'question-bank.json')
 (OUTPUT/'config.js').write_text("window.REVISION_CONFIG = { storage: 'browser' };\n")
