@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const bank = JSON.parse(fs.readFileSync(path.join(root, 'content/f181-question-bank.json')));
+const bank = JSON.parse(fs.readFileSync(path.join(root, 'content/exam-question-bank.json')));
 class MemoryStorage {
   constructor(){this.map=new Map()}
   get length(){return this.map.size}
@@ -14,7 +14,7 @@ class MemoryStorage {
 }
 function setup(storage=new MemoryStorage()) {
   const context=vm.createContext({URL,Date,console,REVISION_CONFIG:{storage:'server'}});
-  vm.runInContext(fs.readFileSync(path.join(root,'app/static/browser-store.js'),'utf8'),context);
+  for(const file of ['learning','tutor','browser-store'])vm.runInContext(fs.readFileSync(path.join(root,'app/static/'+file+'.js'),'utf8'),context);
   return {store:new context.RevisionBrowserStore(bank,storage),storage};
 }
 function answer(extra={}) {return {id:'bfb456b0-2cb7-479f-b03c-86f0a8c0b1d2',question_id:'F181-P01',variant:'main',mode:'parent',outcome:'independent',hints:0,student_saw_answer:false,answer:'Explains why; describes what.',note:'Clear explanation',...extra}}
@@ -37,7 +37,7 @@ test('undo appends a retraction and preserves original event bytes',async()=>{
 });
 test('hints cannot be recorded as independent and one answer is not retention',async()=>{
   const {store}=setup();const record=await store.request('/api/attempts',answer({hints:1}));
-  assert.equal(record.outcome,'hint');assert.equal(store.state().questions[0].later_retest,false);
+  assert.equal(record.outcome,'hint');assert.equal(store.state().questions.find(q=>q.id===answer().question_id).later_retest,false);
 });
 test('a later-day retest adds evidence and a subsequent difficulty takes precedence',async()=>{
   const {store,storage}=setup();const body=answer();
@@ -46,9 +46,9 @@ test('a later-day retest adds evidence and a subsequent difficulty takes precede
   const key=storage.key(0),event=JSON.parse(storage.getItem(key));
   event.recorded_at=new Date(Date.now()-2*24*60*60*1000).toISOString();storage.setItem(key,JSON.stringify(event));
   await store.request('/api/attempts',answer({id:'fbaaa860-666f-42f1-8da8-e157e7e055bb',variant:'retest'}));
-  assert.equal(store.state().questions[0].later_retest,true);
+  assert.equal(store.state().questions.find(q=>q.id===answer().question_id).later_retest,true);
   await store.request('/api/attempts',answer({id:'fffff860-666f-42f1-8da8-e157e7e055bb',outcome:'practice'}));
-  assert.equal(store.state().questions[0].status,'practice');assert.equal(store.state().questions[0].later_retest,false);
+  assert.equal(store.state().questions.find(q=>q.id===answer().question_id).status,'practice');assert.equal(store.state().questions.find(q=>q.id===answer().question_id).later_retest,false);
 });
 test('bad records and unavailable storage fail rather than reporting a save',async()=>{
   const {store}=setup();await assert.rejects(()=>store.request('/api/attempts',answer({question_id:'unknown'})));

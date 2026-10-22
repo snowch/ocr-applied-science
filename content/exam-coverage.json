@@ -1,0 +1,1909 @@
+{
+  "specification": {
+    "url": "https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf",
+    "version": "7.0 June 2026"
+  },
+  "units": [
+    {
+      "id": "F180",
+      "title": "Fundamentals of science",
+      "minutes": 90,
+      "marks": 70
+    },
+    {
+      "id": "F181",
+      "title": "Science in society",
+      "minutes": 75,
+      "marks": 50
+    }
+  ],
+  "areas": [
+    {
+      "id": "B1",
+      "unit": "F180",
+      "title": "Cell structure and microscopy",
+      "pdf_page": 33,
+      "references": [
+        {
+          "id": "1.1.1",
+          "practice_items": 16
+        },
+        {
+          "id": "1.1.2",
+          "practice_items": 12
+        },
+        {
+          "id": "1.1.3",
+          "practice_items": 4
+        },
+        {
+          "id": "1.2.1",
+          "practice_items": 8
+        },
+        {
+          "id": "1.2.2",
+          "practice_items": 8
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "unit": "F180",
+      "title": "Bioenergetics",
+      "pdf_page": 37,
+      "references": [
+        {
+          "id": "2.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "2.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.2.2",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "unit": "F180",
+      "title": "Biological molecules",
+      "pdf_page": 38,
+      "references": [
+        {
+          "id": "3.1.1",
+          "practice_items": 8
+        },
+        {
+          "id": "3.1.2",
+          "practice_items": 8
+        },
+        {
+          "id": "3.1.3",
+          "practice_items": 8
+        },
+        {
+          "id": "3.1.4",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "B4",
+      "unit": "F180",
+      "title": "Biodiversity and ecosystems",
+      "pdf_page": 40,
+      "references": [
+        {
+          "id": "4.1.1",
+          "practice_items": 8
+        },
+        {
+          "id": "4.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "4.2.2",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "unit": "F180",
+      "title": "Atomic structure and the Periodic Table",
+      "pdf_page": 42,
+      "references": [
+        {
+          "id": "1.1.1",
+          "practice_items": 8
+        },
+        {
+          "id": "1.2",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "unit": "F180",
+      "title": "Quantitative chemistry",
+      "pdf_page": 43,
+      "references": [
+        {
+          "id": "2.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.3",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.4",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.5",
+          "practice_items": 8
+        },
+        {
+          "id": "2.1.6",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "unit": "F180",
+      "title": "Structure and bonding",
+      "pdf_page": 45,
+      "references": [
+        {
+          "id": "3.1.1",
+          "practice_items": 12
+        },
+        {
+          "id": "3.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "3.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "3.3.1",
+          "practice_items": 8
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "unit": "F180",
+      "title": "Reaction rates and enthalpy",
+      "pdf_page": 47,
+      "references": [
+        {
+          "id": "4.1.1",
+          "practice_items": 8
+        },
+        {
+          "id": "4.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "4.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "4.2.2",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "unit": "F180",
+      "title": "Electricity",
+      "pdf_page": 49,
+      "references": [
+        {
+          "id": "1.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "1.1.2",
+          "practice_items": 8
+        },
+        {
+          "id": "1.1.3",
+          "practice_items": 4
+        },
+        {
+          "id": "1.1.4",
+          "practice_items": 4
+        },
+        {
+          "id": "1.1.5",
+          "practice_items": 4
+        },
+        {
+          "id": "1.1.6",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "unit": "F180",
+      "title": "Motion",
+      "pdf_page": 52,
+      "references": [
+        {
+          "id": "2.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.3",
+          "practice_items": 8
+        },
+        {
+          "id": "2.1.4",
+          "practice_items": 4
+        },
+        {
+          "id": "2.1.5",
+          "practice_items": 8
+        },
+        {
+          "id": "2.1.6",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "unit": "F180",
+      "title": "Medical physics",
+      "pdf_page": 54,
+      "references": [
+        {
+          "id": "3.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "3.1.2",
+          "practice_items": 8
+        },
+        {
+          "id": "3.1.3",
+          "practice_items": 12
+        },
+        {
+          "id": "3.1.4",
+          "practice_items": 8
+        },
+        {
+          "id": "3.1.5",
+          "practice_items": 8
+        },
+        {
+          "id": "3.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "3.2.2",
+          "practice_items": 12
+        },
+        {
+          "id": "3.2.3",
+          "practice_items": 4
+        },
+        {
+          "id": "3.2.4",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "F181-1",
+      "unit": "F181",
+      "title": "What scientists do",
+      "pdf_page": 62,
+      "references": [
+        {
+          "id": "1.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "1.2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "1.2.2",
+          "practice_items": 4
+        },
+        {
+          "id": "1.3.1",
+          "practice_items": 4
+        },
+        {
+          "id": "1.3.2",
+          "practice_items": 4
+        },
+        {
+          "id": "1.3.3",
+          "practice_items": 4
+        },
+        {
+          "id": "1.4",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "F181-2",
+      "unit": "F181",
+      "title": "Handling scientific data",
+      "pdf_page": 64,
+      "references": [
+        {
+          "id": "2.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.2",
+          "practice_items": 12
+        },
+        {
+          "id": "2.3.1",
+          "practice_items": 4
+        },
+        {
+          "id": "2.3.2",
+          "practice_items": 8
+        },
+        {
+          "id": "2.4.1",
+          "practice_items": 8
+        }
+      ]
+    },
+    {
+      "id": "F181-3",
+      "unit": "F181",
+      "title": "Scientific developments",
+      "pdf_page": 66,
+      "references": [
+        {
+          "id": "3.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "3.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "3.2.1",
+          "practice_items": 8
+        },
+        {
+          "id": "3.2.2",
+          "practice_items": 4
+        },
+        {
+          "id": "3.3.1",
+          "practice_items": 8
+        },
+        {
+          "id": "3.3.2",
+          "practice_items": 4
+        }
+      ]
+    },
+    {
+      "id": "F181-4",
+      "unit": "F181",
+      "title": "Communicating science",
+      "pdf_page": 68,
+      "references": [
+        {
+          "id": "4.1.1",
+          "practice_items": 4
+        },
+        {
+          "id": "4.1.2",
+          "practice_items": 4
+        },
+        {
+          "id": "4.2",
+          "practice_items": 4
+        },
+        {
+          "id": "4.3",
+          "practice_items": 4
+        },
+        {
+          "id": "4.4.1",
+          "practice_items": 4
+        },
+        {
+          "id": "4.4.2",
+          "practice_items": 4
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "F180-S001",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Membranes and transport",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q001A",
+        "F180-Q001B",
+        "F180-Q001C",
+        "F180-Q001D"
+      ]
+    },
+    {
+      "id": "F180-S002",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Cell organelles",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q002A",
+        "F180-Q002B",
+        "F180-Q002C",
+        "F180-Q002D"
+      ]
+    },
+    {
+      "id": "F180-S003",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Prokaryotes and eukaryotes",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q003A",
+        "F180-Q003B",
+        "F180-Q003C",
+        "F180-Q003D"
+      ]
+    },
+    {
+      "id": "F180-S004",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Gram staining",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q004A",
+        "F180-Q004B",
+        "F180-Q004C",
+        "F180-Q004D"
+      ]
+    },
+    {
+      "id": "F180-S005",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Animal cell specialisation",
+      "reference": "1.1.2",
+      "question_ids": [
+        "F180-Q005A",
+        "F180-Q005B",
+        "F180-Q005C",
+        "F180-Q005D"
+      ]
+    },
+    {
+      "id": "F180-S006",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Stem cells and muscle",
+      "reference": "1.1.2",
+      "question_ids": [
+        "F180-Q006A",
+        "F180-Q006B",
+        "F180-Q006C",
+        "F180-Q006D"
+      ]
+    },
+    {
+      "id": "F180-S007",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Leaf cell specialisation",
+      "reference": "1.1.2",
+      "question_ids": [
+        "F180-Q007A",
+        "F180-Q007B",
+        "F180-Q007C",
+        "F180-Q007D"
+      ]
+    },
+    {
+      "id": "F180-S008",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Tissues and transport",
+      "reference": "1.1.3",
+      "question_ids": [
+        "F180-Q008A",
+        "F180-Q008B",
+        "F180-Q008C",
+        "F180-Q008D"
+      ]
+    },
+    {
+      "id": "F180-S009",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Microscope choice",
+      "reference": "1.2.1",
+      "question_ids": [
+        "F180-Q009A",
+        "F180-Q009B",
+        "F180-Q009C",
+        "F180-Q009D"
+      ]
+    },
+    {
+      "id": "F180-S010",
+      "unit": "F180",
+      "area": "B1",
+      "title": "TEM SEM and cell counts",
+      "reference": "1.2.1",
+      "question_ids": [
+        "F180-Q010A",
+        "F180-Q010B",
+        "F180-Q010C",
+        "F180-Q010D"
+      ]
+    },
+    {
+      "id": "F180-S011",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Microscopy practical",
+      "reference": "1.2.2",
+      "question_ids": [
+        "F180-Q011A",
+        "F180-Q011B",
+        "F180-Q011C",
+        "F180-Q011D"
+      ]
+    },
+    {
+      "id": "F180-S012",
+      "unit": "F180",
+      "area": "B1",
+      "title": "Graticule calibration",
+      "reference": "1.2.2",
+      "question_ids": [
+        "F180-Q012A",
+        "F180-Q012B",
+        "F180-Q012C",
+        "F180-Q012D"
+      ]
+    },
+    {
+      "id": "F180-S013",
+      "unit": "F180",
+      "area": "B2",
+      "title": "Chloroplast structure",
+      "reference": "2.1.1",
+      "question_ids": [
+        "F180-Q013A",
+        "F180-Q013B",
+        "F180-Q013C",
+        "F180-Q013D"
+      ]
+    },
+    {
+      "id": "F180-S014",
+      "unit": "F180",
+      "area": "B2",
+      "title": "Photosynthesis and pigments",
+      "reference": "2.1.2",
+      "question_ids": [
+        "F180-Q014A",
+        "F180-Q014B",
+        "F180-Q014C",
+        "F180-Q014D"
+      ]
+    },
+    {
+      "id": "F180-S015",
+      "unit": "F180",
+      "area": "B2",
+      "title": "Mitochondria and ATP",
+      "reference": "2.2.1",
+      "question_ids": [
+        "F180-Q015A",
+        "F180-Q015B",
+        "F180-Q015C",
+        "F180-Q015D"
+      ]
+    },
+    {
+      "id": "F180-S016",
+      "unit": "F180",
+      "area": "B2",
+      "title": "Respiration pathways",
+      "reference": "2.2.2",
+      "question_ids": [
+        "F180-Q016A",
+        "F180-Q016B",
+        "F180-Q016C",
+        "F180-Q016D"
+      ]
+    },
+    {
+      "id": "F180-S017",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Carbohydrate structure",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q017A",
+        "F180-Q017B",
+        "F180-Q017C",
+        "F180-Q017D"
+      ]
+    },
+    {
+      "id": "F180-S018",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Carbohydrate tests",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q018A",
+        "F180-Q018B",
+        "F180-Q018C",
+        "F180-Q018D"
+      ]
+    },
+    {
+      "id": "F180-S019",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Lipids and membranes",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F180-Q019A",
+        "F180-Q019B",
+        "F180-Q019C",
+        "F180-Q019D"
+      ]
+    },
+    {
+      "id": "F180-S020",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Lipid tests and stores",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F180-Q020A",
+        "F180-Q020B",
+        "F180-Q020C",
+        "F180-Q020D"
+      ]
+    },
+    {
+      "id": "F180-S021",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Proteins and chromatography",
+      "reference": "3.1.3",
+      "question_ids": [
+        "F180-Q021A",
+        "F180-Q021B",
+        "F180-Q021C",
+        "F180-Q021D"
+      ]
+    },
+    {
+      "id": "F180-S022",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Enzyme action",
+      "reference": "3.1.3",
+      "question_ids": [
+        "F180-Q022A",
+        "F180-Q022B",
+        "F180-Q022C",
+        "F180-Q022D"
+      ]
+    },
+    {
+      "id": "F180-S023",
+      "unit": "F180",
+      "area": "B3",
+      "title": "Nucleic acids and ATP",
+      "reference": "3.1.4",
+      "question_ids": [
+        "F180-Q023A",
+        "F180-Q023B",
+        "F180-Q023C",
+        "F180-Q023D"
+      ]
+    },
+    {
+      "id": "F180-S024",
+      "unit": "F180",
+      "area": "B4",
+      "title": "Ecosystems and niches",
+      "reference": "4.1.1",
+      "question_ids": [
+        "F180-Q024A",
+        "F180-Q024B",
+        "F180-Q024C",
+        "F180-Q024D"
+      ]
+    },
+    {
+      "id": "F180-S025",
+      "unit": "F180",
+      "area": "B4",
+      "title": "Distribution and energy transfer",
+      "reference": "4.1.1",
+      "question_ids": [
+        "F180-Q025A",
+        "F180-Q025B",
+        "F180-Q025C",
+        "F180-Q025D"
+      ]
+    },
+    {
+      "id": "F180-S026",
+      "unit": "F180",
+      "area": "B4",
+      "title": "Sampling organisms",
+      "reference": "4.2.1",
+      "question_ids": [
+        "F180-Q026A",
+        "F180-Q026B",
+        "F180-Q026C",
+        "F180-Q026D"
+      ]
+    },
+    {
+      "id": "F180-S027",
+      "unit": "F180",
+      "area": "B4",
+      "title": "Transect practical",
+      "reference": "4.2.2",
+      "question_ids": [
+        "F180-Q027A",
+        "F180-Q027B",
+        "F180-Q027C",
+        "F180-Q027D"
+      ]
+    },
+    {
+      "id": "F180-S028",
+      "unit": "F180",
+      "area": "C1",
+      "title": "Atoms ions and isotopes",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q028A",
+        "F180-Q028B",
+        "F180-Q028C",
+        "F180-Q028D"
+      ]
+    },
+    {
+      "id": "F180-S029",
+      "unit": "F180",
+      "area": "C1",
+      "title": "Relative atomic mass",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q029A",
+        "F180-Q029B",
+        "F180-Q029C",
+        "F180-Q029D"
+      ]
+    },
+    {
+      "id": "F180-S030",
+      "unit": "F180",
+      "area": "C1",
+      "title": "Electron configuration and periodicity",
+      "reference": "1.2",
+      "question_ids": [
+        "F180-Q030A",
+        "F180-Q030B",
+        "F180-Q030C",
+        "F180-Q030D"
+      ]
+    },
+    {
+      "id": "F180-S031",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Moles and formulae",
+      "reference": "2.1.1",
+      "question_ids": [
+        "F180-Q031A",
+        "F180-Q031B",
+        "F180-Q031C",
+        "F180-Q031D"
+      ]
+    },
+    {
+      "id": "F180-S032",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Reacting masses",
+      "reference": "2.1.2",
+      "question_ids": [
+        "F180-Q032A",
+        "F180-Q032B",
+        "F180-Q032C",
+        "F180-Q032D"
+      ]
+    },
+    {
+      "id": "F180-S033",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Solution concentration",
+      "reference": "2.1.3",
+      "question_ids": [
+        "F180-Q033A",
+        "F180-Q033B",
+        "F180-Q033C",
+        "F180-Q033D"
+      ]
+    },
+    {
+      "id": "F180-S034",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Neutralisation and salts",
+      "reference": "2.1.4",
+      "question_ids": [
+        "F180-Q034A",
+        "F180-Q034B",
+        "F180-Q034C",
+        "F180-Q034D"
+      ]
+    },
+    {
+      "id": "F180-S035",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Titration practical",
+      "reference": "2.1.5",
+      "question_ids": [
+        "F180-Q035A",
+        "F180-Q035B",
+        "F180-Q035C",
+        "F180-Q035D"
+      ]
+    },
+    {
+      "id": "F180-S036",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Titration endpoints",
+      "reference": "2.1.5",
+      "question_ids": [
+        "F180-Q036A",
+        "F180-Q036B",
+        "F180-Q036C",
+        "F180-Q036D"
+      ]
+    },
+    {
+      "id": "F180-S037",
+      "unit": "F180",
+      "area": "C2",
+      "title": "Gas volumes",
+      "reference": "2.1.6",
+      "question_ids": [
+        "F180-Q037A",
+        "F180-Q037B",
+        "F180-Q037C",
+        "F180-Q037D"
+      ]
+    },
+    {
+      "id": "F180-S038",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Ionic bonding",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q038A",
+        "F180-Q038B",
+        "F180-Q038C",
+        "F180-Q038D"
+      ]
+    },
+    {
+      "id": "F180-S039",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Covalent and metallic bonding",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q039A",
+        "F180-Q039B",
+        "F180-Q039C",
+        "F180-Q039D"
+      ]
+    },
+    {
+      "id": "F180-S040",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Intermolecular forces",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q040A",
+        "F180-Q040B",
+        "F180-Q040C",
+        "F180-Q040D"
+      ]
+    },
+    {
+      "id": "F180-S041",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Ionic formulae",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F180-Q041A",
+        "F180-Q041B",
+        "F180-Q041C",
+        "F180-Q041D"
+      ]
+    },
+    {
+      "id": "F180-S042",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Structure and properties",
+      "reference": "3.2.1",
+      "question_ids": [
+        "F180-Q042A",
+        "F180-Q042B",
+        "F180-Q042C",
+        "F180-Q042D"
+      ]
+    },
+    {
+      "id": "F180-S043",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Organic names and isomers",
+      "reference": "3.3.1",
+      "question_ids": [
+        "F180-Q043A",
+        "F180-Q043B",
+        "F180-Q043C",
+        "F180-Q043D"
+      ]
+    },
+    {
+      "id": "F180-S044",
+      "unit": "F180",
+      "area": "C3",
+      "title": "Alcohols and combustion",
+      "reference": "3.3.1",
+      "question_ids": [
+        "F180-Q044A",
+        "F180-Q044B",
+        "F180-Q044C",
+        "F180-Q044D"
+      ]
+    },
+    {
+      "id": "F180-S045",
+      "unit": "F180",
+      "area": "C4",
+      "title": "Collision theory",
+      "reference": "4.1.1",
+      "question_ids": [
+        "F180-Q045A",
+        "F180-Q045B",
+        "F180-Q045C",
+        "F180-Q045D"
+      ]
+    },
+    {
+      "id": "F180-S046",
+      "unit": "F180",
+      "area": "C4",
+      "title": "Boltzmann distributions",
+      "reference": "4.1.1",
+      "question_ids": [
+        "F180-Q046A",
+        "F180-Q046B",
+        "F180-Q046C",
+        "F180-Q046D"
+      ]
+    },
+    {
+      "id": "F180-S047",
+      "unit": "F180",
+      "area": "C4",
+      "title": "Rates practical",
+      "reference": "4.1.2",
+      "question_ids": [
+        "F180-Q047A",
+        "F180-Q047B",
+        "F180-Q047C",
+        "F180-Q047D"
+      ]
+    },
+    {
+      "id": "F180-S048",
+      "unit": "F180",
+      "area": "C4",
+      "title": "Energy profiles",
+      "reference": "4.2.1",
+      "question_ids": [
+        "F180-Q048A",
+        "F180-Q048B",
+        "F180-Q048C",
+        "F180-Q048D"
+      ]
+    },
+    {
+      "id": "F180-S049",
+      "unit": "F180",
+      "area": "C4",
+      "title": "Combustion calorimetry",
+      "reference": "4.2.2",
+      "question_ids": [
+        "F180-Q049A",
+        "F180-Q049B",
+        "F180-Q049C",
+        "F180-Q049D"
+      ]
+    },
+    {
+      "id": "F180-S050",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Charge and current",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F180-Q050A",
+        "F180-Q050B",
+        "F180-Q050C",
+        "F180-Q050D"
+      ]
+    },
+    {
+      "id": "F180-S051",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Resistance and characteristics",
+      "reference": "1.1.2",
+      "question_ids": [
+        "F180-Q051A",
+        "F180-Q051B",
+        "F180-Q051C",
+        "F180-Q051D"
+      ]
+    },
+    {
+      "id": "F180-S052",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Sensors and diodes",
+      "reference": "1.1.2",
+      "question_ids": [
+        "F180-Q052A",
+        "F180-Q052B",
+        "F180-Q052C",
+        "F180-Q052D"
+      ]
+    },
+    {
+      "id": "F180-S053",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Electrical power and energy",
+      "reference": "1.1.3",
+      "question_ids": [
+        "F180-Q053A",
+        "F180-Q053B",
+        "F180-Q053C",
+        "F180-Q053D"
+      ]
+    },
+    {
+      "id": "F180-S054",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Series and parallel circuits",
+      "reference": "1.1.4",
+      "question_ids": [
+        "F180-Q054A",
+        "F180-Q054B",
+        "F180-Q054C",
+        "F180-Q054D"
+      ]
+    },
+    {
+      "id": "F180-S055",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Potential dividers",
+      "reference": "1.1.5",
+      "question_ids": [
+        "F180-Q055A",
+        "F180-Q055B",
+        "F180-Q055C",
+        "F180-Q055D"
+      ]
+    },
+    {
+      "id": "F180-S056",
+      "unit": "F180",
+      "area": "P1",
+      "title": "Potential divider practical",
+      "reference": "1.1.6",
+      "question_ids": [
+        "F180-Q056A",
+        "F180-Q056B",
+        "F180-Q056C",
+        "F180-Q056D"
+      ]
+    },
+    {
+      "id": "F180-S057",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Energy stores and Sankey diagrams",
+      "reference": "2.1.1",
+      "question_ids": [
+        "F180-Q057A",
+        "F180-Q057B",
+        "F180-Q057C",
+        "F180-Q057D"
+      ]
+    },
+    {
+      "id": "F180-S058",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Work done at an angle",
+      "reference": "2.1.2",
+      "question_ids": [
+        "F180-Q058A",
+        "F180-Q058B",
+        "F180-Q058C",
+        "F180-Q058D"
+      ]
+    },
+    {
+      "id": "F180-S059",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Kinetic gravitational and elastic energy",
+      "reference": "2.1.3",
+      "question_ids": [
+        "F180-Q059A",
+        "F180-Q059B",
+        "F180-Q059C",
+        "F180-Q059D"
+      ]
+    },
+    {
+      "id": "F180-S060",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Elastic energy",
+      "reference": "2.1.3",
+      "question_ids": [
+        "F180-Q060A",
+        "F180-Q060B",
+        "F180-Q060C",
+        "F180-Q060D"
+      ]
+    },
+    {
+      "id": "F180-S061",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Mechanical power and efficiency",
+      "reference": "2.1.4",
+      "question_ids": [
+        "F180-Q061A",
+        "F180-Q061B",
+        "F180-Q061C",
+        "F180-Q061D"
+      ]
+    },
+    {
+      "id": "F180-S062",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Newton's laws and forces",
+      "reference": "2.1.5",
+      "question_ids": [
+        "F180-Q062A",
+        "F180-Q062B",
+        "F180-Q062C",
+        "F180-Q062D"
+      ]
+    },
+    {
+      "id": "F180-S063",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Motion graphs and SUVAT",
+      "reference": "2.1.5",
+      "question_ids": [
+        "F180-Q063A",
+        "F180-Q063B",
+        "F180-Q063C",
+        "F180-Q063D"
+      ]
+    },
+    {
+      "id": "F180-S064",
+      "unit": "F180",
+      "area": "P2",
+      "title": "Free-fall practical",
+      "reference": "2.1.6",
+      "question_ids": [
+        "F180-Q064A",
+        "F180-Q064B",
+        "F180-Q064C",
+        "F180-Q064D"
+      ]
+    },
+    {
+      "id": "F180-S065",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Atomic energy levels",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F180-Q065A",
+        "F180-Q065B",
+        "F180-Q065C",
+        "F180-Q065D"
+      ]
+    },
+    {
+      "id": "F180-S066",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Photons and EM radiation",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F180-Q066A",
+        "F180-Q066B",
+        "F180-Q066C",
+        "F180-Q066D"
+      ]
+    },
+    {
+      "id": "F180-S067",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Photoelectric effect",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F180-Q067A",
+        "F180-Q067B",
+        "F180-Q067C",
+        "F180-Q067D"
+      ]
+    },
+    {
+      "id": "F180-S068",
+      "unit": "F180",
+      "area": "P3",
+      "title": "X-ray tube",
+      "reference": "3.1.3",
+      "question_ids": [
+        "F180-Q068A",
+        "F180-Q068B",
+        "F180-Q068C",
+        "F180-Q068D"
+      ]
+    },
+    {
+      "id": "F180-S069",
+      "unit": "F180",
+      "area": "P3",
+      "title": "X-ray attenuation",
+      "reference": "3.1.3",
+      "question_ids": [
+        "F180-Q069A",
+        "F180-Q069B",
+        "F180-Q069C",
+        "F180-Q069D"
+      ]
+    },
+    {
+      "id": "F180-S070",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Mass attenuation coefficient",
+      "reference": "3.1.3",
+      "question_ids": [
+        "F180-Q070A",
+        "F180-Q070B",
+        "F180-Q070C",
+        "F180-Q070D"
+      ]
+    },
+    {
+      "id": "F180-S071",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Wave properties",
+      "reference": "3.1.4",
+      "question_ids": [
+        "F180-Q071A",
+        "F180-Q071B",
+        "F180-Q071C",
+        "F180-Q071D"
+      ]
+    },
+    {
+      "id": "F180-S072",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Wave intensity",
+      "reference": "3.1.4",
+      "question_ids": [
+        "F180-Q072A",
+        "F180-Q072B",
+        "F180-Q072C",
+        "F180-Q072D"
+      ]
+    },
+    {
+      "id": "F180-S073",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Ultrasound echoes",
+      "reference": "3.1.5",
+      "question_ids": [
+        "F180-Q073A",
+        "F180-Q073B",
+        "F180-Q073C",
+        "F180-Q073D"
+      ]
+    },
+    {
+      "id": "F180-S074",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Acoustic impedance",
+      "reference": "3.1.5",
+      "question_ids": [
+        "F180-Q074A",
+        "F180-Q074B",
+        "F180-Q074C",
+        "F180-Q074D"
+      ]
+    },
+    {
+      "id": "F180-S075",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Nuclear decay",
+      "reference": "3.2.1",
+      "question_ids": [
+        "F180-Q075A",
+        "F180-Q075B",
+        "F180-Q075C",
+        "F180-Q075D"
+      ]
+    },
+    {
+      "id": "F180-S076",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Half-life and activity",
+      "reference": "3.2.2",
+      "question_ids": [
+        "F180-Q076A",
+        "F180-Q076B",
+        "F180-Q076C",
+        "F180-Q076D"
+      ]
+    },
+    {
+      "id": "F180-S077",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Decay equations",
+      "reference": "3.2.2",
+      "question_ids": [
+        "F180-Q077A",
+        "F180-Q077B",
+        "F180-Q077C",
+        "F180-Q077D"
+      ]
+    },
+    {
+      "id": "F180-S078",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Effective half-life",
+      "reference": "3.2.2",
+      "question_ids": [
+        "F180-Q078A",
+        "F180-Q078B",
+        "F180-Q078C",
+        "F180-Q078D"
+      ]
+    },
+    {
+      "id": "F180-S079",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Radiation hazards",
+      "reference": "3.2.3",
+      "question_ids": [
+        "F180-Q079A",
+        "F180-Q079B",
+        "F180-Q079C",
+        "F180-Q079D"
+      ]
+    },
+    {
+      "id": "F180-S080",
+      "unit": "F180",
+      "area": "P3",
+      "title": "Selecting radionuclides",
+      "reference": "3.2.4",
+      "question_ids": [
+        "F180-Q080A",
+        "F180-Q080B",
+        "F180-Q080C",
+        "F180-Q080D"
+      ]
+    },
+    {
+      "id": "F181-S081",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Scientific skills",
+      "reference": "1.1.1",
+      "question_ids": [
+        "F181-Q081A",
+        "F181-Q081B",
+        "F181-Q081C",
+        "F181-Q081D"
+      ]
+    },
+    {
+      "id": "F181-S082",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Scientific method",
+      "reference": "1.2.1",
+      "question_ids": [
+        "F181-Q082A",
+        "F181-Q082B",
+        "F181-Q082C",
+        "F181-Q082D",
+        "F181-P03",
+        "F181-P04",
+        "F181-P05",
+        "F181-P07"
+      ]
+    },
+    {
+      "id": "F181-S083",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Iterative science",
+      "reference": "1.2.2",
+      "question_ids": [
+        "F181-Q083A",
+        "F181-Q083B",
+        "F181-Q083C",
+        "F181-Q083D",
+        "F181-P06"
+      ]
+    },
+    {
+      "id": "F181-S084",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Scientific collaboration",
+      "reference": "1.3.1",
+      "question_ids": [
+        "F181-Q084A",
+        "F181-Q084B",
+        "F181-Q084C",
+        "F181-Q084D",
+        "F181-P13"
+      ]
+    },
+    {
+      "id": "F181-S085",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "International research projects",
+      "reference": "1.3.2",
+      "question_ids": [
+        "F181-Q085A",
+        "F181-Q085B",
+        "F181-Q085C",
+        "F181-Q085D",
+        "F181-P12"
+      ]
+    },
+    {
+      "id": "F181-S086",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Scientific organisations",
+      "reference": "1.3.3",
+      "question_ids": [
+        "F181-Q086A",
+        "F181-Q086B",
+        "F181-Q086C",
+        "F181-Q086D"
+      ]
+    },
+    {
+      "id": "F181-S087",
+      "unit": "F181",
+      "area": "F181-1",
+      "title": "Pure and applied science",
+      "reference": "1.4",
+      "question_ids": [
+        "F181-Q087A",
+        "F181-Q087B",
+        "F181-Q087C",
+        "F181-Q087D"
+      ]
+    },
+    {
+      "id": "F181-S088",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Types of data",
+      "reference": "2.1",
+      "question_ids": [
+        "F181-Q088A",
+        "F181-Q088B",
+        "F181-Q088C",
+        "F181-Q088D",
+        "F181-P14",
+        "F181-P15",
+        "F181-P16"
+      ]
+    },
+    {
+      "id": "F181-S089",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Sampling and bias",
+      "reference": "2.2",
+      "question_ids": [
+        "F181-Q089A",
+        "F181-Q089B",
+        "F181-Q089C",
+        "F181-Q089D",
+        "F181-P20"
+      ]
+    },
+    {
+      "id": "F181-S090",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Cohorts and meta-studies",
+      "reference": "2.2",
+      "question_ids": [
+        "F181-Q090A",
+        "F181-Q090B",
+        "F181-Q090C",
+        "F181-Q090D"
+      ]
+    },
+    {
+      "id": "F181-S091",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Models and estimates",
+      "reference": "2.2",
+      "question_ids": [
+        "F181-Q091A",
+        "F181-Q091B",
+        "F181-Q091C",
+        "F181-Q091D"
+      ]
+    },
+    {
+      "id": "F181-S092",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Scientific databases",
+      "reference": "2.3.1",
+      "question_ids": [
+        "F181-Q092A",
+        "F181-Q092B",
+        "F181-Q092C",
+        "F181-Q092D"
+      ]
+    },
+    {
+      "id": "F181-S093",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Choosing graphs",
+      "reference": "2.3.2",
+      "question_ids": [
+        "F181-Q093A",
+        "F181-Q093B",
+        "F181-Q093C",
+        "F181-Q093D"
+      ]
+    },
+    {
+      "id": "F181-S094",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Distributions and graph interpretation",
+      "reference": "2.3.2",
+      "question_ids": [
+        "F181-Q094A",
+        "F181-Q094B",
+        "F181-Q094C",
+        "F181-Q094D"
+      ]
+    },
+    {
+      "id": "F181-S095",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Correlation and conclusions",
+      "reference": "2.4.1",
+      "question_ids": [
+        "F181-Q095A",
+        "F181-Q095B",
+        "F181-Q095C",
+        "F181-Q095D",
+        "F181-P19"
+      ]
+    },
+    {
+      "id": "F181-S096",
+      "unit": "F181",
+      "area": "F181-2",
+      "title": "Quantitative interpretation",
+      "reference": "2.4.1",
+      "question_ids": [
+        "F181-Q096A",
+        "F181-Q096B",
+        "F181-Q096C",
+        "F181-Q096D",
+        "F181-P17",
+        "F181-P18"
+      ]
+    },
+    {
+      "id": "F181-S097",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Hypotheses and reasoning",
+      "reference": "3.1.1",
+      "question_ids": [
+        "F181-Q097A",
+        "F181-Q097B",
+        "F181-Q097C",
+        "F181-Q097D",
+        "F181-P08"
+      ]
+    },
+    {
+      "id": "F181-S098",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Theories and laws",
+      "reference": "3.1.2",
+      "question_ids": [
+        "F181-Q098A",
+        "F181-Q098B",
+        "F181-Q098C",
+        "F181-Q098D",
+        "F181-P01",
+        "F181-P02"
+      ]
+    },
+    {
+      "id": "F181-S099",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Automation and AI",
+      "reference": "3.2.1",
+      "question_ids": [
+        "F181-Q099A",
+        "F181-Q099B",
+        "F181-Q099C",
+        "F181-Q099D"
+      ]
+    },
+    {
+      "id": "F181-S100",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Emerging technologies",
+      "reference": "3.2.1",
+      "question_ids": [
+        "F181-Q100A",
+        "F181-Q100B",
+        "F181-Q100C",
+        "F181-Q100D"
+      ]
+    },
+    {
+      "id": "F181-S101",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Technology risks",
+      "reference": "3.2.2",
+      "question_ids": [
+        "F181-Q101A",
+        "F181-Q101B",
+        "F181-Q101C",
+        "F181-Q101D"
+      ]
+    },
+    {
+      "id": "F181-S102",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Research funding and ethics",
+      "reference": "3.3.1",
+      "question_ids": [
+        "F181-Q102A",
+        "F181-Q102B",
+        "F181-Q102C",
+        "F181-Q102D"
+      ]
+    },
+    {
+      "id": "F181-S103",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Evaluating developments",
+      "reference": "3.3.1",
+      "question_ids": [
+        "F181-Q103A",
+        "F181-Q103B",
+        "F181-Q103C",
+        "F181-Q103D"
+      ]
+    },
+    {
+      "id": "F181-S104",
+      "unit": "F181",
+      "area": "F181-3",
+      "title": "Contemporary scientific challenges",
+      "reference": "3.3.2",
+      "question_ids": [
+        "F181-Q104A",
+        "F181-Q104B",
+        "F181-Q104C",
+        "F181-Q104D"
+      ]
+    },
+    {
+      "id": "F181-S105",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Public communication",
+      "reference": "4.1.1",
+      "question_ids": [
+        "F181-Q105A",
+        "F181-Q105B",
+        "F181-Q105C",
+        "F181-Q105D"
+      ]
+    },
+    {
+      "id": "F181-S106",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Peer review and expert communication",
+      "reference": "4.1.2",
+      "question_ids": [
+        "F181-Q106A",
+        "F181-Q106B",
+        "F181-Q106C",
+        "F181-Q106D",
+        "F181-P09",
+        "F181-P10",
+        "F181-P11"
+      ]
+    },
+    {
+      "id": "F181-S107",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Plagiarism and attribution",
+      "reference": "4.2",
+      "question_ids": [
+        "F181-Q107A",
+        "F181-Q107B",
+        "F181-Q107C",
+        "F181-Q107D"
+      ]
+    },
+    {
+      "id": "F181-S108",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Evidence and organisations",
+      "reference": "4.3",
+      "question_ids": [
+        "F181-Q108A",
+        "F181-Q108B",
+        "F181-Q108C",
+        "F181-Q108D"
+      ]
+    },
+    {
+      "id": "F181-S109",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Misinformation and trust",
+      "reference": "4.4.1",
+      "question_ids": [
+        "F181-Q109A",
+        "F181-Q109B",
+        "F181-Q109C",
+        "F181-Q109D"
+      ]
+    },
+    {
+      "id": "F181-S110",
+      "unit": "F181",
+      "area": "F181-4",
+      "title": "Bias in communication",
+      "reference": "4.4.2",
+      "question_ids": [
+        "F181-Q110A",
+        "F181-Q110B",
+        "F181-Q110C",
+        "F181-Q110D"
+      ]
+    }
+  ],
+  "limits": [
+    "Every detailed teaching-content reference has starter practice, but this does not establish exhaustive coverage of every breadth-and-depth bullet.",
+    "Diagram drawing, photographic interpretation, full papers and official levels-of-response marking need additional material.",
+    "No exam-series pre-release has been selected. F181 scenarios are general practice, not predictions of the examination.",
+    "Four forms per skill deliberately share concepts; integrated forms reuse recall and application components. Retests reuse linked forms and are not extra unique questions.",
+    "All generated scientific content and rubrics await independent subject-teacher review."
+  ]
+}

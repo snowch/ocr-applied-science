@@ -26,6 +26,8 @@ class SharedRevisionStore{
   const p=e.payload;
   if(e.type==='answer_observed'){
    if(!this.local.bank.questions.some(q=>q.id===p.question_id)||!['parent','self'].includes(p.mode)||!['independent','hint','practice'].includes(p.outcome)||!['main','retest'].includes(p.variant)||!Number.isInteger(p.hints)||p.hints<0||p.hints>2||typeof p.student_saw_answer!=='boolean'||typeof p.answer!=='string'||p.answer.length>2000||typeof p.note!=='string'||p.note.length>400)throw Error('A shared answer is invalid.');
+  if(p.ai_review){if(!global.RevisionTutor)throw Error('AI feedback validation unavailable.');const q=this.local.bank.questions.find(q=>q.id===p.question_id);const review=global.RevisionTutor.validate(p.variant==='main'?q:q.retest,p.answer,p.ai_review);if(review.score!==p.ai_review.score||review.max_marks!==p.ai_review.max_marks)throw Error('Inconsistent shared AI score.');}
+   if(p.elapsed_seconds!==undefined&&(!Number.isInteger(p.elapsed_seconds)||p.elapsed_seconds<0||p.elapsed_seconds>86400))throw Error('Invalid shared timing record.');
   }else if(e.type!=='observation_retracted'||!/^[-a-f0-9]{36}$/i.test(p.target_event_id))throw Error('A shared observation is invalid.');
  }
  async performSync(){

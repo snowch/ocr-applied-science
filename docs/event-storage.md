@@ -49,3 +49,13 @@ Drive editor access is **not** a create-only permission: the app can follow appe
 Drive permits duplicate filenames. Deduplicate by the event UUID, not the filename. A suitable implementation can allocate a [Drive file ID in advance](https://developers.google.com/workspace/drive/api/guides/create-file), persist it with the pending save and reuse it across upload retries. Concurrent use of one event ID must also be handled by the backend, rather than a race-prone list-then-create check.
 
 Keep questions separate from observations. A future cached progress summary is disposable: it can be rebuilt from the event archive and a documented projection version. Refresh the view after successful saves and when another device returns to the app. A serverless deployment needs an external durable event store; its temporary local filesystem is insufficient.
+
+## Current hosted adapter and learning evidence
+
+The hosted app uses a dedicated Upstash hash, with each UUID field created using HSETNX. ACL permissions permit HGETALL/HGET/HSETNX on only that hash; they deny overwriting and deletion. Browser envelopes have no payload checksum; the earlier filesystem checksum is specific to the local adapter. Client timestamps are not authenticated and should not be interpreted as tamper-proof study evidence. Family roles are self-selected, with one private shared connection rather than separate authenticated accounts.
+
+Version 1.0 preserves every pilot question ID. New F180/F181 IDs reference a skill and a canonical question-form ID. Linked retests reference another prepared form, so identical content cannot count twice towards the different-form requirement. Projections are rebuilt from all non-retracted observations. Current difficulty takes precedence and resets the independent-evidence sequence.
+
+An answer payload may also contain `elapsed_seconds` (integer 0–86400) and `ai_review`. AI review fields include `source`, `status`, `met_points`, quoted `evidence`, code-calculated `score`, `max_marks`, `gap_tags`, `next_question`, and `model`. Unknown point IDs, unsupported quotes and inconsistent credit are rejected before saving. AI reviews remain suggestions alongside the self/parent outcome. Credentials never belong in an event. Retracting an observation removes both its human outcome and its AI suggestion from current projections, preserving the original bytes.
+
+The Google Drive section above is historical design exploration and is not used by the current app.

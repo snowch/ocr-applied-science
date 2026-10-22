@@ -1,90 +1,50 @@
-# OCR Applied Science family revision
+# OCR Applied Science family exam coach
 
-A small F181 **Science in society** practice app for a student and parent. Both solo practice and parent-led spoken questions contribute to one understanding record.
+A shared revision app for one student and two parents, focused on the **F180 and F181 written exams** of OCR Cambridge Advanced National Applied Science H151. The live app is <https://snowch.github.io/ocr-applied-science/>. GitHub Actions deploys pushes to `main`.
 
-The record is an **append-only folder of JSON events**. Every observation creates a file; undo creates another event referencing the original. The app rebuilds the progress view from those files.
+## Practice and learning evidence
 
-## GitHub Pages preview
+The bank contains **460 question entries: 320 F180 and 140 F181**. It includes four related forms for each of 110 new skills (recall, application, misconception correction and a combined response) plus the preserved 20-question pilot. Integrated forms reuse recall/application components. Linked retests reuse another form and are not counted as extra questions. They are not guaranteed unseen; the learning model identifies linked copies as the same item.
 
-The `Deploy GitHub Pages` Actions workflow publishes the static app on pushes to `main`. With repository Pages configured to **GitHub Actions**, the expected URL is <https://snowch.github.io/ocr-applied-science/>.
+Every detailed teaching-content reference in the 15 topic areas has starter practice, including the six F180 practicals. This is **not exhaustive coverage of every breadth-and-depth bullet**, nor a replacement for diagrams, photographic interpretation, official papers or teacher feedback. All generated scientific content and marking guides remain provisional pending independent subject-teacher review. F181 exam-series pre-release material has not been selected. See [the coverage map](docs/exam-coverage.md) and [machine-readable coverage](content/exam-coverage.json).
 
-**The Pages preview saves observations only in the current browser.** It supports prepared questions, parent/self-check modes, hints, progress and JSON event backup, but does not synchronize between phones or connect to Google Drive. Clearing browser data removes those local records; use **Back up observations** to export them. No learner observations or API keys are uploaded to the public repository or deployed artifact.
+Choose both units or one unit, then practise alone, ask together, or try a timed question. Timed practice hides hints and the guide until the independent answer is finished. Marking remains a parent observation or student self-check; elapsed time is recorded separately. A prepared explanation and worked example support gap repair.
 
-GitHub Pages cannot run the Python API. The static preview uses a separate browser storage adapter; local server mode continues to use JSON event files. Shared family storage still needs an authenticated backend or a configured Google Drive integration.
+Understanding tracks each skill's dated evidence. A latest supported/incomplete answer reopens a gap. Secure evidence requires at least three different question forms on three different dates spanning seven days, including an independent application response, all since the last difficulty. Hints and answer disclosure prevent an independent observation. This is an evidence indicator, **not a validated mastery judgement or predicted grade**. The scheduler prioritises due gaps, delayed checks and untested areas, avoiding immediate repetition and maintaining breadth across units. Same-day repetition or linked duplicate prompts cannot satisfy the different-item requirement.
 
-## Try locally
+## Settings: family storage
 
-Requires Python 3.10 or newer; the app has no third-party dependencies.
+Open **Settings → Family storage** and import the same private Upstash connection JSON on each phone. Alternatively enter a REST URL, restricted token and `f181:events` key. No Google setup is required. The historic key name is retained across both units so existing observations survive the upgrade.
 
-```sh
-git clone https://github.com/snowch/ocr-applied-science.git
-cd ocr-applied-science
-python -m app.server
-```
+The connection JSON contains `url`, `token`, `key` and optional `trial_expires`. Configure a dedicated Upstash ACL user with `-@all +hgetall +hget +hsetnx` and `~f181:events`. Upstash requires a password from `ACL GENTOKEN username`; use that returned token as both password and REST bearer token. Do not use the database owner token in the app. The family token permits reading all family observations and adding new ones; it does not identify which family member saved them.
 
-Open <http://127.0.0.1:8765>. The server deliberately listens only on loopback. Two browser sessions connected to that instance see the same practice learner.
+Each observation is a new hash field created using HSETNX. Undo adds a retraction; the restricted token cannot overwrite or delete original records. Database owners retain administrative access. Each device caches records locally and retries pending saves. The banner distinguishes confirmed sync from offline/pending saves. Refresh Understanding to see another device's changes. Device-only history stays separate on connecting, and switching stores does not copy records between families. Disconnect is blocked while saves are pending. Back up before clearing browser data.
 
-Choose **Revise on my own** or **Ask together**. In a parent-led session, read the question aloud, consult the answer guide, and record **Explained independently**, **Needed a hint**, or **Needs practice**. Answers and notes are optional. The app saves the observation when an outcome is tapped.
+## Settings: Mistral tutor
 
-## Understanding, with evidence
+Open **Settings → Mistral tutor**, enter an API key, choose Small or Medium, then **Test and connect**. Keys stay in session storage by default; remembering in local storage is optional on trusted devices. Keys are never written to family storage or the public repository. API reviews use credits and happen only on request.
 
-- Parent observations and student self-checks are labelled separately.
-- Hints or disclosure of the answer prevent an attempt being recorded as independent.
-- One correct answer does not establish mastery.
-- A later-retest indicator requires recorded independent answers at least 24 hours apart, including a retest variant. It remains an observation-based indicator, not a validated mastery judgement.
-- A later difficulty takes precedence in the current view; earlier observations remain in the history.
-- A short summary can be reviewed before sharing through the device's share menu or copying into WhatsApp/email.
+- **Get Mistral feedback**, while answering, sends the current question, rubric and written/transcribed answer. Mistral suggests rubric points, exact supporting quotations, gap categories and a probing follow-up. Code validates point IDs and quotations and calculates the score; model-provided totals are not trusted. Ambiguous answers require clarification. Changed answers invalidate earlier feedback. The user can discard an incorrect AI suggestion and judge against the guide.
+- **Ask Mistral to review progress**, in Understanding, sends aggregate skill histories, outcomes, AI gap tags and suggested scores. It compares progress over time and proposes up to three known skills and an actionable next session. Detailed past answers, parent notes and storage credentials are not sent. Advice cannot overwrite evidence statuses, and fabricated skill IDs are rejected.
+- Saved answer reviews are explicitly labelled **AI suggestions**, separately from parent/student outcomes. They sync with the observation, allowing all three devices to see the evidence. Oral answers need a brief transcription for AI marking. AI-generated follow-ups can be asked aloud and recorded in the note; they are not automatically marked.
 
-## Storage and privacy
+AI scientific/marking accuracy across the expanded bank has not been independently established. No full-bank live Mistral evaluation was run during this upgrade; request formatting, validation and UI paths are tested with synthetic responses.
 
-Runtime events live under `data/events/`, excluded from Git. **This repository is public: do not commit learner records, names, account credentials, or API keys.** Prepared questions and application code belong here; private family observations belong in private runtime storage.
+## Local development and checks
 
-The local adapter atomically creates each event once, checks retry IDs, and never overwrites an event. This is append-only application behaviour, not tamper-proof or write-once storage. Someone with filesystem access can still change or delete files.
-
-See [the event format and Drive design](docs/event-storage.md).
-
-## Prepared content and AI experiments
-
-`content/f181-question-bank.json` contains 20 original practice questions, marking points, model answers, hints, follow-ups and different retests. The bank covers selected F181 topics, not the full syllabus or live pre-release material. It was aligned to the [OCR specification, version 7.0, June 2026](https://www.ocr.org.uk/Images/697579-specification-cambridge-advanced-national-in-applied-science.pdf).
-
-The practice rubrics are generated and await independent teacher review. They are not official OCR mark schemes. Official OCR PDFs are linked rather than redistributed here.
-
-The current local app uses parent observations and self-checks. It does **not** call an AI API. The optional developer experiment below evaluates Mistral against prepared rubrics using synthetic answers:
+Requires Python 3.10+; runtime has no third-party dependencies. `python -m app.server` serves <http://127.0.0.1:8765> on loopback only, with append-only JSON events in ignored `data/events/`. Do not expose that development server publicly. The hosted app uses browser/Upstash storage instead.
 
 ```sh
-python tools/evaluate_bank.py
-```
-
-It asks for an API key without displaying it and writes results under ignored `reports/`. It defaults to Mistral Small; set `F181_MARKER_MODEL=mistral-medium-latest` to test Medium. API calls may incur charges. Earlier synthetic runs matched 18/20 expected scores with Small and 20/20 with Medium after deterministic scoring checks; these do not establish official marking accuracy.
-
-## Checks
-
-```sh
+python tools/build_question_bank.py
 python -m unittest discover -s tests -v
+node --test tests/*.test.cjs
 node --check app/static/app.js
-node --test tests/browser-store.test.cjs
+node --check app/static/tutor.js
 python tools/build_pages.py
 ```
 
-Node is optional for running the app and is used only for the JavaScript syntax check.
+Source seeds are in `content/source/`. Rebuilding is deterministic and uses no API. Original OCR documents are linked, not redistributed. The older `content/f181-question-bank.json` remains for the original synthetic marking experiment in `tools/evaluate_bank.py`.
 
-## What remains for a phone-ready family app
+For an isolated live sync check set `F181_LIVE_CONNECTION` to a private JSON connection using a separate `f181:test:events` key and matching restricted token. Never use real learner records in tests.
 
-- Hosted backend, separate family sign-ins and server-verified parent/student roles.
-- Private Google Drive event storage, including authorization, retry handling and folder access.
-- Browser/mobile interaction checks, installable PWA behaviour and offline/reconnection handling.
-- Optional rubric-based AI marking with ambiguous answers routed for clarification.
-
-Google Drive is not connected yet. The local prototype is not a publicly deployed or authenticated service. It must not be exposed directly to the internet.
-
-### Shared family storage
-
-On the hosted app, open **Storage** and import the same private Upstash connection JSON on parent and student devices. Alternatively enter a REST URL, restricted token and `f181:events` key. No Google setup is needed. Remember the connection only on trusted devices; the token permits reading every family observation. Never commit the connection file.
-
-The JSON fields are `url`, `token`, `key` and optional `trial_expires`. Configure a dedicated Upstash ACL user with only `+hgetall +hget +hsetnx`, `-@all` before those grants, and `~f181:events`. Upstash requires a password from `ACL GENTOKEN username`; use that returned token as the password and REST bearer token. Do not put the database owner token in the app.
-
-Each observation is a field in the hash. HSETNX creates it once; undo adds a retraction. The restricted token cannot overwrite or delete existing records. Database owners retain administrative access. Each device caches records locally and retries pending saves when online. The status banner distinguishes pending/offline saves from confirmed sync. Open Understanding or tap Refresh to fetch another device’s changes. Device-only history stays separate when connecting; switching stores does not copy records between families. Disconnect is blocked while saves are pending. Back up observations before clearing browser data. This is a simple shared family token, without individual accounts or authorship verification.
-
-Temporary trial databases expire after 72 hours unless claimed. Use synthetic observations until claimed, and claim before the displayed expiry to keep the data. This version is a responsive web app; offline installation and service-worker caching are not implemented.
-
-Run `node --test tests/*.test.cjs` for browser storage tests. For an isolated live check, set `F181_LIVE_CONNECTION` to a private JSON using a separate `f181:test:events` key and restricted token. Never use real learner records in this test.
+This public repository must never contain private connection files, API keys or learner observations. The app is responsive web software; installation, service-worker offline loading, physical iOS/Android validation, full mock-paper delivery and individual authenticated accounts are not yet implemented. Local-first observation queues work while an already loaded app is offline.

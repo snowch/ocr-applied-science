@@ -3,7 +3,7 @@
   'use strict';
   const PREFIX = 'f181-preview:event:';
   const DAY = 24 * 60 * 60 * 1000;
-  const stable = value => JSON.stringify(value, Object.keys(value).sort());
+  const stable = value => JSON.stringify(value && typeof value === 'object' ? (Array.isArray(value) ? value.map(v => JSON.parse(stable(v))) : Object.fromEntries(Object.keys(value).sort().map(k => [k, JSON.parse(stable(value[k]))]))) : value);
   class RevisionBrowserStore {
     constructor(bank, storage, prefix = PREFIX) { this.bank = bank; this.storage = storage; this.prefix = prefix; }
     events() {
@@ -49,11 +49,12 @@
         const topic = topics.get(q.topic);
         topic.total++; topic.seen += history.length > 0; topic.independent += status === 'independent';
         topic.needs_practice += ['hint', 'practice'].includes(status); topic.retested += retained;
-        return { id: q.id, topic: q.topic, status, later_retest: retained, due, next_variant: due ? 'retest' : 'main', attempts: history.length, latest: latest || null };
+        return { id: q.id, unit: q.unit || 'F181', skill_id: q.skill_id || q.id, skill: q.skill || q.topic, demand: q.demand, topic: q.topic, status, later_retest: retained, due, next_variant: due ? 'retest' : 'main', attempts: history.length, latest: latest || null };
       });
       const rank = q => ['hint', 'practice'].includes(q.status) ? 0 : q.due ? 1 : q.status === 'new' ? 2 : 3;
       const ordered = [...questions].sort((a, b) => rank(a) - rank(b) || a.id.localeCompare(b.id));
-      return { questions, topics: [...topics.values()], recent: [...attempts].reverse().slice(0, 20), suggested: ordered[0], total_attempts: attempts.length, server_time: new Date().toISOString() };
+      const learning = global.RevisionLearning?.project(this.bank, attempts) || {};
+      return { ...learning, questions, topics: [...topics.values()], recent: [...attempts].reverse().slice(0, 20), suggested: ordered[0], total_attempts: attempts.length, server_time: new Date().toISOString() };
     }
     async request(path, body) {
       const url = new URL(path, 'https://preview.invalid');
@@ -63,7 +64,7 @@
         const variant = url.searchParams.get('variant') || 'main';
         if (!q || !['main', 'retest'].includes(variant)) throw Error('Question not found.');
         const item = variant === 'main' ? q : q.retest;
-        return { id: q.id, variant, topic: q.topic, question: item.question, source: q.source,
+        return { ...q, ...item, id: q.id, item_key: item.item_key || (variant === 'main' ? q.id : q.id + '-R'), variant, unit: q.unit || 'F181', topic: q.topic, question: item.question, source: q.source,
           hints: variant === 'main' ? q.hints : ['Think back to the concept you practised. Try explaining it in your own words.'],
           marking_points: item.marking_points, model_answer: variant === 'main' ? q.model_answer : item.marking_points.map(p => p.criterion).join(' ') };
       }
@@ -73,7 +74,15 @@
             !['parent', 'self'].includes(body.mode) || !['independent', 'hint', 'practice'].includes(body.outcome) ||
             !Number.isInteger(body.hints) || body.hints < 0 || body.hints > 2 || typeof body.student_saw_answer !== 'boolean' ||
             typeof body.answer !== 'string' || body.answer.length > 2000 || typeof body.note !== 'string' || body.note.length > 400) throw Error('Invalid answer record.');
-        const payload = { student_id: 'practice-learner', question_id: body.question_id, question_version: this.bank.version,
+        let ai_review = null;
+        if (body.ai_review) {
+          if (!global.RevisionTutor) throw Error('AI feedback could not be validated.');
+          const q = this.bank.questions.find(q => q.id === body.question_id);
+          const item = body.variant === 'main' ? q : q.retest;
+          ai_review = global.RevisionTutor.validate(item, body.answer.trim(), body.ai_review);
+        }
+        if (body.elapsed_seconds !== undefined && (!Number.isInteger(body.elapsed_seconds) || body.elapsed_seconds < 0 || body.elapsed_seconds > 86400)) throw Error('Invalid timing record.');
+        const payload = { ...(body.elapsed_seconds !== undefined ? {elapsed_seconds:body.elapsed_seconds} : {}), ...(ai_review ? { ai_review } : {}), student_id: 'practice-learner', question_id: body.question_id, question_version: this.bank.version,
           variant: body.variant, mode: body.mode, outcome: body.outcome === 'independent' && (body.hints || body.student_saw_answer) ? 'hint' : body.outcome,
           hints: body.hints, student_saw_answer: body.student_saw_answer, answer: body.answer.trim(), note: body.note.trim() };
         const event = this.append(body.id, 'answer_observed', payload);
@@ -89,7 +98,7 @@
   }
   global.RevisionBrowserStore = RevisionBrowserStore;
   if (global.REVISION_CONFIG?.storage === 'browser') {
-    global.revisionStoreReady = fetch('./question-bank.json').then(r => {
+    global.revisionStoreReady = global.fetch('./question-bank.json').then(r => {
       if (!r.ok) throw Error('Could not load the practice questions.');
       return r.json();
     }).then(bank => { global.revisionStore = new RevisionBrowserStore(bank, global.localStorage); });

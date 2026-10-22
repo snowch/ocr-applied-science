@@ -11,9 +11,11 @@ import json
 import uuid
 from urllib.parse import urlparse, parse_qs
 from .event_store import EventStore
+from .learning import project
+from .assessment import validate as validate_review
 
 ROOT=Path(__file__).parent
-BANK=json.loads((ROOT.parent/'content'/'f181-question-bank.json').read_text())
+BANK=json.loads((ROOT.parent/'content'/'exam-question-bank.json').read_text())
 QUESTIONS={q['id']:q for q in BANK['questions']}
 UTC=dt.timezone.utc
 STORE=EventStore(ROOT.parent/'data'/'events')
@@ -47,6 +49,12 @@ def record(body):
     payload={'student_id':'practice-learner','question_id':qid,'question_version':BANK['version'],
              'variant':variant,'mode':mode,'outcome':outcome,'hints':hints,
              'student_saw_answer':saw,'answer':answer.strip(),'note':note.strip()}
+    if body.get('ai_review'):
+        q=QUESTIONS[qid];payload['ai_review']=validate_review(q if variant=='main' else q['retest'],answer.strip(),body['ai_review'])
+    if 'elapsed_seconds' in body:
+        elapsed=body['elapsed_seconds']
+        if type(elapsed) is not int or not 0<=elapsed<=86400:raise ValueError('Invalid timing')
+        payload['elapsed_seconds']=elapsed
     event=STORE.append(identifier,'answer_observed',payload)
     return {**event['payload'],'id':event['event_id'],'created_at':event['recorded_at']}
 
@@ -69,7 +77,7 @@ def state():
             latest_time=dt.datetime.fromisoformat(latest['created_at'])
             retained=any(a['outcome']=='independent' and latest_time-dt.datetime.fromisoformat(a['created_at'])>=dt.timedelta(days=1) for a in history[:-1])
         due=bool(latest and now-dt.datetime.fromisoformat(latest['created_at'])>=dt.timedelta(days=1))
-        entry={'id':qid,'topic':q['topic'],'status':status,'later_retest':retained,'due':due,
+        entry={'id':qid,'unit':q.get('unit','F181'),'skill_id':q.get('skill_id',qid),'skill':q.get('skill',q['topic']),'demand':q.get('demand'),'topic':q['topic'],'status':status,'later_retest':retained,'due':due,
                'next_variant':'retest' if due else 'main','attempts':len(history),'latest':latest}
         result.append(entry)
         topic=topics.setdefault(q['topic'],{'name':q['topic'],'total':0,'seen':0,'independent':0,'needs_practice':0,'retested':0})
@@ -79,7 +87,7 @@ def state():
         topic['needs_practice']+=int(status in ('hint','practice'))
         topic['retested']+=int(retained)
     ordered=sorted(result,key=lambda q:(0 if q['status'] in ('hint','practice') else 1 if q['due'] else 2 if q['status']=='new' else 3,q['id']))
-    return {'questions':result,'topics':list(topics.values()),'recent':list(reversed(attempts))[:20],
+    return {**project(BANK,attempts,now),'questions':result,'topics':list(topics.values()),'recent':list(reversed(attempts))[:20],
             'suggested':ordered[0] if ordered else None,'total_attempts':len(attempts),'server_time':now.isoformat()}
 
 class Handler(BaseHTTPRequestHandler):
@@ -100,15 +108,15 @@ class Handler(BaseHTTPRequestHandler):
             query=parse_qs(url.query);qid=query.get('id',[''])[0];variant=query.get('variant',['main'])[0]
             if qid not in QUESTIONS or variant not in ('main','retest'):return self.send_json(404,{'error':'Question not found'})
             q=QUESTIONS[qid];item=q if variant=='main' else q['retest']
-            return self.send_json(200,{'id':qid,'variant':variant,'topic':q['topic'],'question':item['question'],'source':q['source'],
+            return self.send_json(200,{**q,**item,'id':qid,'variant':variant,'topic':q['topic'],'question':item['question'],'source':q['source'],
                 'hints':q['hints'] if variant=='main' else ['Think back to the concept you practised. Try explaining it in your own words.'],
                 'marking_points':item['marking_points'],'model_answer':q['model_answer'] if variant=='main' else ' '.join(p['criterion'] for p in item['marking_points'])})
-        if url.path in ('/','/app.js','/style.css','/config.js','/browser-store.js','/upstash-store.js'):
+        if url.path in ('/','/app.js','/style.css','/config.js','/browser-store.js','/upstash-store.js','/learning.js','/tutor.js'):
             name='index.html' if url.path=='/' else url.path[1:]
             data=(ROOT/'static'/name).read_bytes();self.send_response(200)
             self.send_header('Content-Type','text/html; charset=utf-8' if url.path=='/' else 'text/css; charset=utf-8' if name.endswith('.css') else 'text/javascript; charset=utf-8')
             self.send_header('X-Content-Type-Options','nosniff')
-            self.send_header('Content-Security-Policy',"default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'")
+            self.send_header('Content-Security-Policy',"default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self' https://api.mistral.ai; img-src 'self' data:; frame-ancestors 'none'")
             self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
         return self.send_json(404,{'error':'Not found'})
     def do_POST(self):

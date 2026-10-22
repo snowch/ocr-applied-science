@@ -1,0 +1,110 @@
+Facilitated diffusion can use membrane proteins without ATP.~It moves substances down their concentration gradient, unlike active transport.
+Ribosomes synthesise proteins by translation.~The Golgi modifies and packages proteins rather than translating the code.
+Bacteria contain DNA even though they lack a membrane-bound nucleus.~Their main DNA is located in the cytoplasm in a nucleoid region.
+Bacterial susceptibility differs between species and strains.~Envelope permeability and resistance mechanisms can affect antibiotic entry or action.
+Specialised animal cells differ in their structures and organelle abundance.~For example sperm have many mitochondria for movement while mature mammalian erythrocytes lack them.
+Differentiation produces a cell adapted to a particular function.~It usually restricts rather than expands the range of specialised functions the cell can perform.
+Stomatal closure can reduce carbon dioxide entry.~This can limit photosynthesis despite reducing water loss.
+Xylem carries water and mineral ions while phloem carries organic solutes.~Phloem moves material between sources and sinks rather than only from roots upwards.
+Greater magnification enlarges the image but does not necessarily increase resolving power.~Unresolved structures remain unresolved if the optical system's resolution has not improved.
+Electron microscopy normally requires non-living prepared specimens.~Preparation and vacuum conditions prevent routine observation of live cells moving in water.
+Magnification is image size divided by actual size.~Both sizes must be expressed in the same units.
+Graticule divisions must be calibrated for each objective.~Changing the objective changes the specimen length represented by one division.
+Stroma and thylakoids have different functions.~Light absorption occurs in thylakoid-associated pigments while the stroma contains enzymes for carbon fixation.
+A light-response plateau indicates that light is no longer the limiting factor.~Carbon dioxide or temperature may instead limit photosynthesis.
+Waterlogging can restrict oxygen supply to roots.~This reduces aerobic ATP production needed for active ion uptake.
+Anaerobic respiration produces less ATP per glucose than aerobic respiration.~Glucose is only partially broken down in anaerobic pathways.
+Hydrolysis breaks glycosidic bonds.~Water is used rather than released in this process.
+A negative Benedict's test only indicates no detectable reducing sugar under the test conditions.~Non-reducing sugars or other carbohydrates may still be present.
+Unsaturated fatty acid tails have bends associated with double bonds.~These reduce tight packing and usually increase membrane fluidity.
+A positive emulsion test gives a cloudy white emulsion.~A clear mixture is not that positive observation.
+Primary structure is the amino acid sequence.~Three-dimensional folding describes higher levels of protein organisation.
+Enzymes act as catalysts and are not consumed by the overall reaction.~They can catalyse repeated reactions, although they may become denatured or inhibited.
+Some DNA changes do not alter the amino acid sequence.~Even a changed amino acid does not necessarily destroy function; the effect depends on the change and its location.
+Energy is transferred through food chains and becomes dispersed as heat or leaves in waste.~It is not recycled indefinitely like matter can be.
+Soil pH is a non-living chemical condition.~It is therefore abiotic even though it affects living organisms.
+Random sampling reduces deliberate selection bias but does not guarantee perfect representation.~Chance variation and an incomplete sampling frame can still affect results.
+Choosing only green patches selects locations non-randomly.~It can overestimate cover, so defined random positions or appropriate transects should be used.
+Isotopes have the same proton number.~They differ in neutron number and therefore mass number.
+Relative atomic mass is an abundance-weighted mean of isotope masses.~It may be non-integer and differs from the mass of the most abundant isotope.
+Elements in a main group share an outer-electron pattern.~Elements in a period share the highest occupied principal shell, not a fixed outer-electron count.
+Empirical formula gives the simplest ratio while molecular formula gives actual atom counts.~For example glucose has molecular formula C6H12O6 but empirical formula CH2O.
+Balanced coefficients give mole ratios.~Mass ratios also depend on the different molar masses.
+250 cm3 is 0.250 dm3.~Using 250 dm3 would make the calculated amount one thousand times too large.
+Acid-carbonate reactions produce carbon dioxide rather than hydrogen.~Acid-base neutralisation may produce salt and water without a gas.
+Adding water changes concentration but not the moles of alkali delivered.~The same delivered moles require the same amount of acid for neutralisation.
+A rough titre is normally excluded from the accurate mean.~Use suitable concordant accurate titres and investigate anomalies rather than averaging indiscriminately.
+Approximately 24 dm3 is the volume of one mole of gas at RTP.~A mole contains about 6.02 times 10^23 particles, not one molecule.
+Ionic bonding is attraction between oppositely charged ions.~Sharing an electron pair with attraction to nuclei describes a covalent bond.
+Delocalised electrons carry current through a solid metal.~The positive ions remain in lattice positions rather than flowing through the solid.
+Boiling usually overcomes forces between molecules.~Covalent bonds within the molecules remain intact.
+The ion charges must balance overall.~Two Al3+ ions and three sulfate 2-minus ions give Al2(SO4)3.
+Carbon allotropes have different bonding arrangements.~Graphite has mobile delocalised electrons whereas diamond has four covalent bonds per carbon without comparable mobile carriers.
+Structural isomers share a molecular formula.~Their atom connectivity or structural formula differs.
+Secondary describes two carbon neighbours of the carbon carrying OH.~It does not describe the number of OH groups.
+A catalyst lowers activation energy by providing a different pathway.~It does not need to increase particle kinetic energies or temperature.
+At a fixed number of particles the area under the distribution remains constant.~A catalyst changes the activation-energy threshold, not that total area.
+Initial rate is the gradient at the start of the curve.~Final volume divided by total time is an average over the interval, not generally the initial rate.
+Exothermic reactions may still need activation energy.~The products have lower energy even though a barrier must first be overcome.
+Combustion transfers energy to the surroundings and has negative delta H.~The water temperature rise measures energy gained by the water, not a positive reaction enthalpy.
+One ampere is one coulomb of charge per second.~One coulomb represents a very large number of elementary charges, not one electron.
+Resistance can change with physical conditions.~For example heating a filament lamp changes its resistance.
+An NTC thermistor's resistance decreases as temperature increases.~The negative temperature coefficient distinguishes it from a resistance that rises with temperature.
+A watt is one joule per second.~It measures power rather than a total amount of energy.
+Adding a parallel conducting path lowers the equivalent resistance.~It allows a larger total current for the same applied voltage.
+Series resistors share voltage in proportion to resistance.~The smaller resistance therefore has the smaller potential difference for the same current.
+A voltmeter measures potential difference across two points.~It should be connected in parallel across the chosen output.
+Wasted energy is transferred to less useful stores, often dispersed thermal energy.~Total energy is still conserved.
+A perpendicular force has zero component along displacement.~Its work along that displacement is zero because cos 90 degrees is zero.
+Kinetic energy is proportional to speed squared at fixed mass.~Doubling speed therefore gives four times the kinetic energy.
+For a linear spring the average force while extending from zero is half the final force.~The energy is one half kx squared, equal to the triangular area under the force-extension graph.
+Power depends on time as well as work.~Equal work completed in less time requires greater average power.
+Constant velocity means zero acceleration.~The resultant force is therefore zero for constant mass, even if individual forces act.
+Area under a velocity-time graph gives signed displacement.~Acceleration is the gradient of the graph.
+For a fall from rest with constant acceleration, displacement is one half gt squared.~The expression gt gives velocity change rather than displacement.
+Excitation moves an electron to another bound energy level.~Ionisation is the separate process of removing it from the atom.
+Photon energy is inversely proportional to wavelength.~Shorter wavelength therefore means higher photon energy.
+Below threshold frequency each photon has insufficient energy for emission.~Increasing intensity supplies more insufficient-energy photons, not higher-energy ones.
+Tube current changes the number of electrons striking the target each second.~Accelerating voltage sets their maximum kinetic energy and the maximum possible photon energy.
+Greater absorber thickness reduces transmitted intensity under the attenuation model.~The exponential factor exp(-mu x) decreases as x increases for positive mu.
+Mass attenuation coefficient is linear attenuation coefficient divided by density.~The resulting centimetre-gram unit is cm2 g-1.
+A wave transfers energy through oscillations.~The medium's particles oscillate locally rather than travelling the whole distance with the wave.
+Intensity is proportional to amplitude squared under unchanged conditions.~Doubling amplitude therefore quadruples intensity.
+The echo time includes outward and return travel.~Depth is sound speed times return time divided by two.
+Gel replaces the air gap with a better-matched coupling medium.~This reduces unwanted reflection and allows more ultrasound to enter tissue.
+Beta-minus decay is a nuclear process in which a neutron changes to a proton with an electron emission.~Atomic number increases by one while mass number is unchanged.
+One half-life means half the initial population remains undecayed on average.~Decay is random, so it does not specify which particular nuclei decay.
+Activity is decay constant multiplied by number of undecayed nuclei.~A = lambda N gives a higher expected decay rate for more undecayed nuclei at the same lambda.
+Reciprocals of effective half-life contributions add.~The effective half-life is shorter than either physical or biological half-life when both processes operate.
+Irradiation alone does not necessarily transfer radioactive material.~Contamination requires radioactive material to be present on or inside the exposed object.
+The appropriate half-life depends on the purpose and duration of use.~An unnecessarily long half-life may increase exposure or waste-management difficulties.
+An observation suggests a question or hypothesis rather than establishing safety and efficacy.~Controlled testing and evaluation of evidence are needed before a treatment claim.
+A hypothesis is a testable proposed explanation or relationship.~It remains open to testing and revision rather than being proved beyond change.
+Contradictory results can reveal problems with an explanation or method.~They can guide revision, further testing or a new hypothesis.
+More collaborators do not remove the need for quality checks.~Shared protocols, independent scrutiny and clear responsibility remain necessary.
+Methods and formats must be checked before combining international data.~Otherwise differences in measurement or quality may produce misleading comparisons.
+Scientific organisations work with evidence and uncertainty.~Coordination and assessment improve decisions but cannot guarantee certainty or universal agreement.
+Pure research can later enable useful applications.~Understanding a mechanism may provide the basis for a technology not originally envisaged.
+Some numeric entries are discrete counts or category codes.~Continuous data describe quantities that vary across a range, subject to measurement precision.
+Large samples can still be systematically unrepresentative.~Increasing size does not remove a biased recruitment method.
+A meta-study can inherit bias and incompatibilities from included studies.~Study quality, comparability and missing evidence need explicit evaluation.
+Models depend on their assumptions, inputs and validation.~A numerical prediction is not automatically more reliable than measured evidence.
+International collaboration does not require exposing identifiable patient information.~Appropriate de-identification, permissions and governed access can support sharing.
+Histograms show frequencies for continuous intervals with adjoining bars.~Bar charts compare distinct categories and are not interchangeable with histograms in every case.
+Identical medians indicate only the same central statistic.~Spread, shape and individual values may differ.
+Correlation alone does not prove causation.~Confounding, reverse causation or bias can explain a relationship.
+The absolute fall is one percentage point.~The relative reduction is one divided by four times 100 = 25%.
+Supporting observations can justify an inductive explanation without proving every possible case.~Further testing may reveal exceptions or a better explanation.
+A theory is an evidence-supported explanation, not merely a guess.~A law describes a relationship and is not the promotion stage of a theory.
+AI may reproduce biases in training data or evaluation.~Representative independent testing is needed to assess performance across groups.
+Simulation simplifies reality and may omit important conditions.~Real-world performance and practical competence must still be validated.
+Accurate measurement does not remove privacy, security, access or environmental risks.~These need assessment and proportionate safeguards alongside technical performance.
+Funding source can indicate a potential conflict but does not determine whether results are true.~Evaluate methods, transparency, analysis and independent replication.
+Ethical decisions consider rights, welfare, fairness and consequences.~Financial profit alone cannot settle those considerations.
+Electric vehicles have impacts during manufacturing, energy supply and disposal.~Lifecycle evaluation is needed even when there are no exhaust emissions during use.
+Engaging communication can still state uncertainty clearly.~Removing important uncertainty can mislead the audience.
+Peer review is expert scrutiny rather than proof of truth.~Errors may remain and later replication or evidence can change conclusions.
+A reference must identify a real source supporting the statement.~Fabricating attribution misleads readers and does not excuse copied material.
+Evidence can inform recommendations without uniquely determining a policy.~Organisations also weigh aims, values, costs and uncertainty.
+False information can be called misinformation when intent is unknown.~Disinformation specifically involves intent to deceive, which should not be assumed without evidence.
+Selecting only confirming information introduces confirmation bias.~Seek relevant contradictory evidence and use transparent selection criteria.

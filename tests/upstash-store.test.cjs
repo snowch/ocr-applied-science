@@ -1,7 +1,7 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');const {randomUUID}=require('node:crypto');
-const bank=JSON.parse(fs.readFileSync('content/f181-question-bank.json'));
+const bank=JSON.parse(fs.readFileSync('content/exam-question-bank.json'));
 class Memory{constructor(){this.m=new Map()}get length(){return this.m.size}key(i){return [...this.m.keys()][i]}getItem(k){return this.m.get(k)||null}setItem(k,v){this.m.set(k,String(v))}}
-function client(fetcher,config={url:'https://example.upstash.io',token:'restricted',key:'f181:test:events'}){const c=vm.createContext({URL,Date,Event,AbortSignal,console,setInterval});for(const f of ['browser-store','upstash-store'])vm.runInContext(fs.readFileSync(`app/static/${f}.js`,'utf8'),c);return new c.SharedRevisionStore(new c.RevisionBrowserStore(bank,new Memory(),'test:event:'),config,fetcher)}
+function client(fetcher,config={url:'https://example.upstash.io',token:'restricted',key:'f181:test:events'}){const c=vm.createContext({URL,Date,Event,AbortSignal,console,setInterval});for(const f of ['learning','tutor','browser-store','upstash-store'])vm.runInContext(fs.readFileSync(`app/static/${f}.js`,'utf8'),c);return new c.SharedRevisionStore(new c.RevisionBrowserStore(bank,new Memory(),'test:event:'),config,fetcher)}
 function answer(){return {id:randomUUID(),question_id:bank.questions[0].id,variant:'main',mode:'parent',outcome:'independent',hints:0,student_saw_answer:false,answer:'Test answer',note:'Synthetic sync test'}}
 test('two devices exchange observations, retries, retractions and offline saves',async()=>{
  const remote=new Map();let offline=false;
@@ -12,12 +12,12 @@ test('two devices exchange observations, retries, retractions and offline saves'
 });
 test('remote conflicts cannot overwrite local observations',async()=>{let entries=[];const c=client(async()=>({ok:true,json:async()=>({result:entries})}));await c.local.request('/api/attempts',answer());const e=c.events()[0];entries=[e.event_id,JSON.stringify({...e,payload:{...e.payload,note:'changed'}})];await assert.rejects(()=>c.sync(),/Conflicting/);assert.notEqual(c.events()[0].payload.note,'changed');});
 test('unsafe endpoints are rejected',()=>{assert.throws(()=>client(()=>{},{url:'http://example.upstash.io',token:'x'}));assert.throws(()=>client(()=>{},{url:'https://evil.test',token:'x'}));});
-test('live trial exchanges observations using only the restricted test token',{skip:!process.env.F181_LIVE_CONNECTION},async()=>{const config=JSON.parse(fs.readFileSync(process.env.F181_LIVE_CONNECTION));const a=client(fetch,config),b=client(fetch,config),record=answer();await a.request('/api/attempts',record);assert.equal(a.error,null);await b.sync();assert.ok(b.events().some(e=>e.event_id===record.id));await b.request('/api/undo',{id:record.id});await a.sync();assert.ok(a.events().some(e=>e.event_id==='retract-'+record.id));});
+test('live trial exchanges observations using only the restricted test token',{skip:!process.env.F181_LIVE_CONNECTION},async()=>{const config=JSON.parse(fs.readFileSync(process.env.F181_LIVE_CONNECTION));const a=client(fetch,config),b=client(fetch,config),record=answer();const q=bank.questions[0];record.answer=q.marking_points[0].criterion;record.elapsed_seconds=17;record.ai_review={status:'attempted',met_points:[q.marking_points[0].id],evidence:{[q.marking_points[0].id]:record.answer},gap_tags:['knowledge'],model:'synthetic-fixture'};await a.request('/api/attempts',record);assert.equal(a.error,null);await b.sync();const shared=b.events().find(e=>e.event_id===record.id);assert.ok(shared);assert.equal(shared.payload.ai_review.score,1);assert.equal(shared.payload.elapsed_seconds,17);await b.request('/api/undo',{id:record.id});await a.sync();assert.ok(a.events().some(e=>e.event_id==='retract-'+record.id));});
 
 test('native browser fetch keeps its Window receiver',async()=>{
  const c=vm.createContext({URL,Date,Event,AbortSignal,console,setInterval});
  vm.runInContext(`globalThis.fetch=async function(){if(this!==globalThis)throw Error('fetch requires Window');return {ok:true,json:async()=>({result:[]})}}`,c);
- for(const f of ['browser-store','upstash-store'])vm.runInContext(fs.readFileSync(`app/static/${f}.js`,'utf8'),c);
+ for(const f of ['learning','tutor','browser-store','upstash-store'])vm.runInContext(fs.readFileSync(`app/static/${f}.js`,'utf8'),c);
  const store=new c.SharedRevisionStore(new c.RevisionBrowserStore(bank,new Memory()),{url:'https://example.upstash.io',token:'restricted',key:'f181:test:events'});
  await store.sync();assert.equal(store.synced,true);assert.equal(store.error,null);
 });

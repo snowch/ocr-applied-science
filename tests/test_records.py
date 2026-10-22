@@ -53,7 +53,7 @@ class RecordTests(unittest.TestCase):
     def test_one_good_answer_and_same_day_repetition_do_not_establish_retention(self):
         self.request(self.parent,'/api/attempts',self.answer())
         self.request(self.student,'/api/attempts',self.answer(mode='self',variant='retest'))
-        q=self.request(self.student,'/api/state')['questions'][0]
+        q=self.request(self.student,'/api/state')['questions'][next(i for i,q in enumerate(server.BANK['questions']) if q['id']=='F181-P01')]
         self.assertFalse(q['later_retest'])
     def test_later_retest_counts_then_new_difficulty_takes_precedence(self):
         past=dt.datetime.now(server.UTC)-dt.timedelta(days=2)
@@ -62,12 +62,12 @@ class RecordTests(unittest.TestCase):
         original=(server.STORE.directory/(first['id']+'.json')).read_bytes()
         server.STORE.clock=lambda:dt.datetime.now(server.UTC)
         self.request(self.parent,'/api/attempts',self.answer(variant='retest'))
-        self.assertTrue(self.request(self.student,'/api/state')['questions'][0]['later_retest'])
+        self.assertTrue(self.request(self.student,'/api/state')['questions'][next(i for i,q in enumerate(server.BANK['questions']) if q['id']=='F181-P01')]['later_retest'])
         latest=self.answer(outcome='practice');self.request(self.parent,'/api/attempts',latest)
-        q=self.request(self.student,'/api/state')['questions'][0]
+        q=self.request(self.student,'/api/state')['questions'][next(i for i,q in enumerate(server.BANK['questions']) if q['id']=='F181-P01')]
         self.assertFalse(q['later_retest']);self.assertEqual(q['status'],'practice')
         self.request(self.parent,'/api/undo',{'id':latest['id']})
-        self.assertTrue(self.request(self.student,'/api/state')['questions'][0]['later_retest'])
+        self.assertTrue(self.request(self.student,'/api/state')['questions'][next(i for i,q in enumerate(server.BANK['questions']) if q['id']=='F181-P01')]['later_retest'])
         self.assertEqual((server.STORE.directory/(first['id']+'.json')).read_bytes(),original)
         self.assertEqual(len(server.STORE.all()),4)
     def test_invalid_question_and_cross_origin_write_are_rejected(self):
