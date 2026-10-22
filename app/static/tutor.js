@@ -11,14 +11,14 @@ function validate(question,answer,data){
  if(data.status!=='attempted'&&data.met_points.length)throw Error('AI feedback has inconsistent marks.');
  if(!Array.isArray(data.gap_tags)||data.gap_tags.some(t=>!tags.includes(t)))throw Error('AI feedback has unknown gap categories.');
  const points=[...data.met_points];for(const [trigger,implied] of Object.entries(question.credit_dependencies||{}))if(points.includes(trigger))for(const id of implied)if(allowed.has(id)&&!points.includes(id))points.push(id);
- return {source:'mistral',status:data.status,met_points:[...data.met_points],evidence,score:data.status==='attempted'?points.reduce((s,id)=>s+allowed.get(id).marks,0):null,max_marks:question.max_marks||question.marking_points.reduce((s,p)=>s+p.marks,0),gap_tags:[...new Set(data.gap_tags)],next_question:typeof data.next_question==='string'?data.next_question.slice(0,500):'',model:typeof data.model==='string'?data.model.slice(0,100):'mistral-small-latest'};
+ return {source:'mistral',status:data.status,met_points:[...data.met_points],evidence,score:data.status==='attempted'?points.reduce((s,id)=>s+allowed.get(id).marks,0):null,max_marks:question.max_marks||question.marking_points.reduce((s,p)=>s+p.marks,0),gap_tags:[...new Set(data.gap_tags)],next_question:typeof data.next_question==='string'?data.next_question.slice(0,500):'',model:typeof data.model==='string'?data.model.slice(0,100):'mistral-medium-latest'};
 }
 function outcome(review,hints,saw){
  if(!review||review.status!=='attempted'||!Number.isInteger(review.score)||!Number.isInteger(review.max_marks)||review.max_marks<1||review.score<0||review.score>review.max_marks)throw Error('Clarify the answer before saving an AI result.');
  return review.score<review.max_marks?'practice':hints||saw?'hint':'independent';
 }
-function config(){try{return JSON.parse(global.localStorage.getItem(KEY)||global.sessionStorage.getItem(KEY)||'null');}catch{return null;}}
-function save(key,model,remember){if(!key.trim())throw Error('Enter a Mistral API key.');if(!['mistral-small-latest','mistral-medium-latest'].includes(model))throw Error('Choose a supported model.');global.localStorage.removeItem(KEY);global.sessionStorage.removeItem(KEY);(remember?global.localStorage:global.sessionStorage).setItem(KEY,JSON.stringify({key:key.trim(),model}));}
+function config(){try{const saved=JSON.parse(global.localStorage.getItem(KEY)||global.sessionStorage.getItem(KEY)||'null');return saved?{...saved,model:'mistral-medium-latest'}:null;}catch{return null;}}
+function save(key,model,remember){if(!key.trim())throw Error('Enter a Mistral API key.');model='mistral-medium-latest';global.localStorage.removeItem(KEY);global.sessionStorage.removeItem(KEY);(remember?global.localStorage:global.sessionStorage).setItem(KEY,JSON.stringify({key:key.trim(),model}));}
 function clear(){global.localStorage.removeItem(KEY);global.sessionStorage.removeItem(KEY);}
 async function test(key){
  const r=await global.fetch('https://api.mistral.ai/v1/models',{headers:{Authorization:'Bearer '+key.trim()},credentials:'omit',redirect:'error',signal:AbortSignal.timeout(20000)});
