@@ -8,3 +8,5 @@ input[type="url"],input[type="password"],input:not([type]){display:block;width:1
 .preline{white-space:pre-line}.history .pill{font-size:.8rem}details.card>summary{cursor:pointer;font-weight:700;padding:8px 0}#clock{font-variant-numeric:tabular-nums;font-weight:700}#aiResult:empty{display:none}nav button{padding:10px}select{max-width:100%}
 
 .sync-status{display:inline-block;margin-left:4px;font-size:11px;line-height:1;color:#927022}.sync-status[data-state="synced"]{color:#315d47}.sync-status[hidden]{display:none}
+
+@media(max-width:620px){.brand{font-size:20px}.brand span{font-size:10px}}
