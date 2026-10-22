@@ -30,15 +30,19 @@ function progress(){const skills=(state.skills||[]).filter(inUnit),questions=sta
 async function share(){const skills=(state.skills||[]).filter(inUnit);const text='F180/F181 revision update\n'+['needs_work','improving','secure','untested'].map(status=>`${skillLabel[status]}: ${skills.filter(s=>s.status===status).length} skills`).join('\n')+'\nNext gaps: '+skills.filter(s=>s.status==='needs_work').slice(0,5).map(s=>s.title).join(', ')+'.\nBased on parent observations and student self-checks; AI suggestions are provisional.';screen='share';main.innerHTML=`<div class="question-card card"><h1>Review before sharing</h1><p class="muted">Edit together. Detailed answers and notes are left out.</p><textarea id="summary" rows="10">${esc(text)}</textarea><div class="actions"><button class="primary" id="sendSummary">Share</button><button id="copySummary">Copy</button><button id="cancelShare">Back</button></div></div>`;document.querySelector('#cancelShare').onclick=()=>{screen='progress';progress()};document.querySelector('#copySummary').onclick=async()=>{try{await navigator.clipboard.writeText(document.querySelector('#summary').value);announce('Summary copied')}catch{announce('Select the summary text to copy it.')}};document.querySelector('#sendSummary').onclick=async()=>{try{const value=document.querySelector('#summary').value;if(navigator.share)await navigator.share({title:'Revision update',text:value});else{await navigator.clipboard.writeText(value);announce('Summary copied — paste into WhatsApp or email.')}}catch(e){if(e.name!=='AbortError')announce('Use Copy to share this summary.')}};}
 document.querySelector('#todayNav').onclick=()=>load();document.querySelector('#progressNav').onclick=()=>load('progress');
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&screen==='progress')load('progress')});
-if(deviceOnly){document.querySelector('#storageNotice').hidden=false;document.querySelector('footer span').textContent='F180 + F181 exam practice · Generated content awaiting teacher review.';document.querySelector('#exportEvents').onclick=async()=>{try{await window.revisionStoreReady;const blob=new Blob([JSON.stringify(window.revisionStore.events(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='exam-observations-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}catch(e){announce(e.message)}};}
+if(deviceOnly){document.querySelector('#storageNotice').hidden=false;document.querySelector('footer span').textContent='F180 + F181 exam practice · Generated content awaiting teacher review.';}
+async function exportObservations(){try{await window.revisionStoreReady;const blob=new Blob([JSON.stringify(window.revisionStore.events(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='exam-observations-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}catch(e){announce(e.message)}}
+
 load();
 function storageStatus(){
  if(!deviceOnly)return;
  const store=window.revisionStore,shared=Boolean(store?.config),pending=store?.pending?.()||0;
- const text=shared?(store.error?`Offline or sync needs attention. ${pending} pending observation(s).`:pending?`${pending} observation(s) waiting to sync.`:'Connected · all saved observations synced.'):'Saved on this device only. Connect shared storage to use another phone.';
- const aside=document.querySelector('#storageNotice');aside.firstElementChild.textContent=text;
- // Keep status accurate without displaying credentials.
- Array.from(aside.childNodes).filter(n=>n.nodeType===3).forEach(n=>n.textContent=' ');
+ const detail=shared?(store.error?`Sync needs attention. ${pending} pending observation(s).`:pending?`${pending} observation(s) waiting to sync.`:'All saved observations synced.'):'Saved on this device only.';
+ const badge=document.querySelector('#storageNotice');
+ badge.textContent=shared?(store.error?'!':pending?String(pending):'✓'):'•';
+ badge.dataset.state=shared&&!store.error&&!pending?'synced':'attention';
+ badge.title=detail;badge.setAttribute('aria-label',detail);
+
 }
 window.addEventListener('revision-sync',storageStatus);
 window.revisionStoreReady?.then(storageStatus).catch(()=>{});
@@ -74,6 +78,6 @@ async function reviewProgressAI(){
 document.querySelector('#settingsNav').onclick=async()=>{
  nav('settings');if(window.revisionStoreReady)await window.revisionStoreReady;
  const shared=Boolean(window.revisionStore?.config),ai=Boolean(window.RevisionTutor.config());
- main.innerHTML=`<section class="question-card"><h1>Settings</h1><section class="card section"><h2>Family storage</h2><p>${shared?'Connected. Your family’s observations sync across configured devices.':'Device only. Import the private family connection file to share observations.'}</p><button id="openStorage">Configure family storage</button></section><section class="card section"><h2>Mistral tutor</h2><p>${ai?'An API key is connected on this device.':'Connect an API key for answer feedback, gap analysis and progress reviews.'}</p><button id="openTutor">Configure Mistral</button></section><p class="small muted section">The family storage token and Mistral key are separate credentials. Mistral keys stay on this device or browser session and are never uploaded to family storage.</p></section>`;
- document.querySelector('#openStorage').onclick=showStorage;document.querySelector('#openTutor').onclick=showTutor;
+ main.innerHTML=`<section class="question-card"><h1>Settings</h1><section class="card section"><h2>Family storage</h2><p>${shared?'Connected. Your family’s observations sync across configured devices.':'Device only. Import the private family connection file to share observations.'}</p><div class="actions"><button id="openStorage">Configure family storage</button>${deviceOnly?'<button id="exportEvents">Back up observations</button>':''}</div></section><section class="card section"><h2>Mistral tutor</h2><p>${ai?'An API key is connected on this device.':'Connect an API key for answer feedback, gap analysis and progress reviews.'}</p><button id="openTutor">Configure Mistral</button></section><p class="small muted section">The family storage token and Mistral key are separate credentials. Mistral keys stay on this device or browser session and are never uploaded to family storage.</p></section>`;
+ document.querySelector('#openStorage').onclick=showStorage;document.querySelector('#openTutor').onclick=showTutor;if(deviceOnly)document.querySelector('#exportEvents').onclick=exportObservations;
 };
